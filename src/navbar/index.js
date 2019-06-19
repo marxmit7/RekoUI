@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Navbar from "react-bootstrap/Navbar";
 import "./index.css";
 
-class _navbar extends React.Component {
+class NavBar extends React.Component {
     render() {
         return (
             <div>
@@ -16,4 +16,4 @@ class _navbar extends React.Component {
     }
 }
 
-export default _navbar;
+export default NavBar;
