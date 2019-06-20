@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import NavBar from "./header/index";
 import CoreBody from "./main/index";
-import ImageFR from "./main/Homepage/image_upload/imageUpload.js";
+import ImageFR from "./main/Homepage/image_upload/imageUpload";
+import EmbedNow from "./main/Homepage/embed/index"
+import VideoFR from "./main/Homepage/video_upload/index"
 import { BrowserRouter, Route ,Switch} from "react-router-dom";
 
 class App extends Component {
@@ -14,6 +16,8 @@ class App extends Component {
                         <Switch>
                             <Route path="/" component={CoreBody} exact />
                             <Route path="/image" component={ImageFR} exact />
+                            <Route path="/embed" component={EmbedNow} exact />
+                            <Route path="/video" component={VideoFR} exact />
                         </Switch>
                     </BrowserRouter>
                 </div>
