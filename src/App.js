@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 // import axios from "axios";
-import NavBar from "./navbar/index";
-import Tab from "./tab/index";
+import NavBar from "./header/index";
 import CoreBody from "./main/index";
 
 class App extends Component {

@@ -18,44 +18,35 @@ const useStyles = makeStyles(theme => ({
 
 export default function NestedGrid() {
     const classes = useStyles();
+    const cells = [
+        { id: "Embed", name: "embed_fr" },
+        { id: "Image", name: "image_fr" },
+        { id: "Video", name: "video_fr" },
+        { id: "FeedBack", name: "feedback_fr" },
+        { id: "APIs", name: "apis_fr" },
+        { id: "Documentation", name: "documentation_fr" }
+    ];
+
+    function clickHandler()
+    {
+        console.log('aasdfasdf')
+    }
 
     function FormRow() {
         return (
             <React.Fragment>
-                <Grid item xs={4}>
-                    <Paper className={["embed_fr", classes.paper].join(" ")}>
-                        Embed
-                    </Paper>
-                </Grid>
-                <Grid item xs={4}>
-                    <Paper className={["image_fr", classes.paper].join(" ")}>
-                        Image
-                    </Paper>
-                </Grid>
-                <Grid item xs={4}>
-                    <Paper className={["video_fr", classes.paper].join(" ")}>
-                        Video
-                    </Paper>
-                </Grid>
-                <Grid item xs={4}>
-                    <Paper className={["feedback_fr", classes.paper].join(" ")}>
-                        FeedBack
-                    </Paper>
-                </Grid>
-                <Grid item xs={4}>
-                    <Paper className={["apis_fr", classes.paper].join(" ")}>
-                        APIs
-                    </Paper>
-                </Grid>
-                <Grid item xs={4}>
-                    <Paper
-                        className={["documentation_fr", classes.paper].join(
-                            " "
-                        )}
-                    >
-                        Documentation
-                    </Paper>
-                </Grid>
+                {cells.map(content => (
+                    <Grid item xs={4}>
+                    <a onClick={clickHandler}>
+                        <Paper
+                            className={[content.name, classes.paper].join(" ")}
+
+                         >
+                            {content.id}
+                        </Paper>
+                        </a>
+                    </Grid>
+                ))}
             </React.Fragment>
         );
     }
