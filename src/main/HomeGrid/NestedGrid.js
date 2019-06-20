@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import "./NestedGrid.css";
+import { NavLink } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -23,13 +24,12 @@ export default function NestedGrid() {
         { id: "Image", name: "image_fr" },
         { id: "Video", name: "video_fr" },
         { id: "FeedBack", name: "feedback_fr" },
-        { id: "APIs", name: "apis_fr" },
+        // { id: "APIs", name: "apis_fr" },
         { id: "Documentation", name: "documentation_fr" }
     ];
 
-    function clickHandler()
-    {
-        console.log('aasdfasdf')
+    function clickHandler() {
+        console.log("aasdfasdf");
     }
 
     function FormRow() {
@@ -37,14 +37,15 @@ export default function NestedGrid() {
             <React.Fragment>
                 {cells.map(content => (
                     <Grid item xs={4}>
-                    <a onClick={clickHandler}>
-                        <Paper
-                            className={[content.name, classes.paper].join(" ")}
-
-                         >
-                            {content.id}
-                        </Paper>
-                        </a>
+                        <NavLink to={content.id}>
+                            <Paper
+                                className={[content.name, classes.paper].join(
+                                    " "
+                                )}
+                            >
+                                {content.id}
+                            </Paper>
+                        </NavLink>
                     </Grid>
                 ))}
             </React.Fragment>
