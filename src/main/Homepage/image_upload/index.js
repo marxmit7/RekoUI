@@ -24,7 +24,8 @@ class ImageFR extends Component {
         this.state = {
             file: null,
             preview: null,
-            filetext: "Upload Image "
+            filetext: "Upload Image ",
+            resultjson: null
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleState = this.handleState.bind(this);
@@ -50,9 +51,8 @@ class ImageFR extends Component {
                 }
             })
             .then(res => {
-                console.log(res.data);
-            })
-            .catch(err => console.log(err));
+                this.setState({resultjson:res.data});
+            }).catch(console.log);
     }
 
     render() {
@@ -96,6 +96,7 @@ class ImageFR extends Component {
                     <Grid item xs={12} sm={6}>
                         <Paper className={useStyles.paper}>
                             Result to be shown
+                            {console.log(this.state.resultjson) }
                         </Paper>
                     </Grid>
                 </Grid>
