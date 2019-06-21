@@ -23,7 +23,7 @@ class ImageFR extends Component {
         super(props);
         this.state = {
             file: null,
-            preview:null,
+            preview: null,
             filetext: "Upload Image "
         };
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -31,13 +31,11 @@ class ImageFR extends Component {
     }
     handleState(event) {
         this.setState({
-            file:event.target.files[0],
+            file: event.target.files[0],
             preview: URL.createObjectURL(event.target.files[0]),
             filetext: null
-
         });
     }
-
 
     handleSubmit(event) {
         event.preventDefault();
@@ -55,7 +53,7 @@ class ImageFR extends Component {
                 console.log(res.data);
             })
             .catch(err => console.log(err));
-    };
+    }
 
     render() {
         return (
@@ -84,18 +82,15 @@ class ImageFR extends Component {
                                     <label htmlFor="contained-button-file">
                                         <UploadButton />
                                     </label>
+                                    <Button
+                                        variant="contained"
+                                        color="primary"
+                                        onClick={this.handleSubmit}
+                                    >
+                                        Process
+                                    </Button>
                                 </div>
                             </form>
-
-                            <div>
-                                <Button
-                                    variant="contained"
-                                    color="primary"
-                                    onClick={this.handleSubmit}
-                                >
-                                    Process
-                                </Button>
-                            </div>
                         </div>
                     </Grid>
                     <Grid item xs={12} sm={6}>
