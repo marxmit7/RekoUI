@@ -50,9 +50,12 @@ class ImageFR extends Component {
                     "content-type": "multipart/form-data"
                 }
             })
-            .then(res => {
-                this.setState({resultjson:res.data});
-            }).catch(console.log);
+            .then(response => {
+                this.setState({
+                    resultjson: JSON.stringify(response.data, null, 2)
+                });
+            })
+            .catch(console.log);
     }
 
     render() {
@@ -95,8 +98,10 @@ class ImageFR extends Component {
                     </Grid>
                     <Grid item xs={12} sm={6}>
                         <Paper className={useStyles.paper}>
-                            Result to be shown
-                            {console.log(this.state.resultjson) }
+                            <div>
+                                {" "}
+                                <pre>{this.state.resultjson}</pre>
+                            </div>
                         </Paper>
                     </Grid>
                 </Grid>
