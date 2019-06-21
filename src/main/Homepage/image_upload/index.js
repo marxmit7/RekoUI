@@ -5,7 +5,7 @@ import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
-import { UploadButton, ProcessButton } from "../../utils/buttons";
+import { UploadButton } from "../../utils/buttons";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -25,7 +25,7 @@ class ImageFR extends Component {
             file: null,
             preview: null,
             filetext: "Upload Image ",
-            resultjson: null
+            resultjson: "Output will be shown here"
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleState = this.handleState.bind(this);
