@@ -3,7 +3,6 @@ import "./index.css";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
-import Button from "@material-ui/core/Button";
 import { UploadButton } from "../../utils/buttons";
 
 const useStyles = makeStyles(theme => ({
@@ -24,9 +23,9 @@ class ImageFR extends React.Component {
             file: null,
             filetext: "Upload Image"
         };
-        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
-    handleChange(event) {
+    handleSubmit(event) {
         this.setState({
             file: URL.createObjectURL(event.target.files[0]),
             filetext: null
@@ -40,28 +39,29 @@ class ImageFR extends React.Component {
                     <Grid item xs={12} sm={6}>
                         <Paper className={useStyles.paper}>
                             <div>
-                                <div>
-                                    {this.state.filetext}
-                                    <img height="300" src={this.state.file} />
-                                </div>
-
-                                <div>
-                                    <input
-                                        accept="image/*"
-                                        type="file"
-                                        style={{ display: "none" }}
-                                        onChange={this.handleChange}
-                                        id="contained-button-file"
-                                    />
-                                    <label htmlFor="contained-button-file">
-                                        <UploadButton />
-                                    </label>
-                                </div>
+                                {this.state.filetext}
+                                <img height="400" src={this.state.file} />
                             </div>
                         </Paper>
+
+                        <div>
+                            <input
+                                accept="image/*"
+                                type="file"
+                                style={{ display: "none" }}
+                                onChange={this.handleSubmit}
+                                id="contained-button-file"
+                            />
+
+                            <div>
+                                <label htmlFor="contained-button-file">
+                                    <UploadButton />
+                                </label>
+                            </div>
+                        </div>
                     </Grid>
                     <Grid item xs={12} sm={6}>
-                        <Paper className={useStyles.paper}>xs=12 sm=6</Paper>
+                        <Paper className={useStyles.paper}>Result to be shown</Paper>
                     </Grid>
                 </Grid>
             </div>
