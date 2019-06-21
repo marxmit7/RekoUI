@@ -11,8 +11,8 @@ class App extends Component {
         return (
             <div>
                 <div>
-                    <NavBar />
                     <BrowserRouter>
+                    <NavBar />
                         <Switch>
                             <Route path="/" component={CoreBody} exact />
                             <Route path="/image" component={ImageFR} exact />
