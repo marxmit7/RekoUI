@@ -1,12 +1,9 @@
 import React, { Component } from "react";
 import axios from "axios";
 
-class App extends Component {
+class TestApi extends Component {
     state = {
-        id: "",
-        title: "",
-        created_on: ""
-        // image: null
+        file:null
     };
 
     handleChange = e => {
@@ -15,12 +12,18 @@ class App extends Component {
         });
     };
 
+    handleImageChange = (e) => {
+        this.setState({
+          file: e.target.files[0]
+        })
+      };
+
     handleSubmit = e => {
         e.preventDefault();
         console.log(this.state);
         let form_data = new FormData();
-        form_data.append("title", this.state.title);
-        let url = "http://localhost:8000/api/test/";
+        form_data.append("file", this.state.file);
+        let url = "http://localhost:8000/api/image/";
         axios
             .post(url, form_data, {
                 headers: {
@@ -39,17 +42,6 @@ class App extends Component {
                 <form onSubmit={this.handleSubmit}>
                     <p>
                         <input
-                            type="text"
-                            placeholder="Title"
-                            id="title"
-                            value={this.state.title}
-                            onChange={this.handleChange}
-                            required
-                        />
-                    </p>
-
-                    <p>
-                        <input
                             type="file"
                             id="image"
                             accept="image/png, image/jpeg"
@@ -64,4 +56,4 @@ class App extends Component {
     }
 }
 
-export default App;
+export { TestApi };

@@ -3,7 +3,7 @@ import Navbar from "react-bootstrap/Navbar";
 import "./index.css";
 import { NavLink } from "react-router-dom";
 
-class NavBar extends React.Component {
+class NavBar extends Component {
     render() {
         return (
             <div>

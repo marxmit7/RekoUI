@@ -3,7 +3,7 @@ import "./index.css";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
-import { UploadButton } from "../../utils/buttons";
+import { UploadButton, ProcessButton } from "../../utils/buttons";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -16,12 +16,12 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-class ImageFR extends React.Component {
+class ImageFR extends Component {
     constructor(props) {
         super(props);
         this.state = {
             file: null,
-            filetext: "Upload Image"
+            filetext: "Upload Image "
         };
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -58,10 +58,18 @@ class ImageFR extends React.Component {
                                     <UploadButton />
                                 </label>
                             </div>
+                            <div
+                                onClick={() => {
+                                    console.log("onClick");
+                                }}>
+                                <ProcessButton />
+                            </div>
                         </div>
                     </Grid>
                     <Grid item xs={12} sm={6}>
-                        <Paper className={useStyles.paper}>Result to be shown</Paper>
+                        <Paper className={useStyles.paper}>
+                            Result to be shown
+                        </Paper>
                     </Grid>
                 </Grid>
             </div>

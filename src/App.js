@@ -5,6 +5,7 @@ import ImageFR from "./main/Homepage/image_upload/index"
 import EmbedNow from "./main/Homepage/embed/index";
 import VideoFR from "./main/Homepage/video_upload/index";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { TestApi } from "./main/utils/utilmethod";
 
 class App extends Component {
     render() {
@@ -13,6 +14,7 @@ class App extends Component {
                 <div>
                     <BrowserRouter>
                     <NavBar />
+                    <TestApi />
                         <Switch>
                             <Route path="/" component={CoreBody} exact />
                             <Route path="/image" component={ImageFR} exact />
@@ -20,6 +22,7 @@ class App extends Component {
                             <Route path="/video" component={VideoFR} exact />
                         </Switch>
                     </BrowserRouter>
+
                 </div>
             </div>
         );

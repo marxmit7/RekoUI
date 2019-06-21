@@ -1,13 +1,7 @@
 import React from 'react';
-import clsx from 'clsx';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
-import DeleteIcon from '@material-ui/icons/Delete';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
-import KeyboardVoiceIcon from '@material-ui/icons/KeyboardVoice';
-import Icon from '@material-ui/core/Icon';
-import SaveIcon from '@material-ui/icons/Save';
-import { func } from 'prop-types';
 
 const useStyles = makeStyles(theme => ({
   button: {
@@ -37,4 +31,16 @@ function UploadButton() {
   );
 }
 
-export {UploadButton}
+function ProcessButton() {
+  const classes = useStyles();
+
+  return (
+    <div>
+    <Button variant="contained" color="primary" className={classes.button} >
+    Primary
+  </Button>
+    </div>
+  );
+}
+
+export {UploadButton , ProcessButton}

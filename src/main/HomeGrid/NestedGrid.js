@@ -28,9 +28,9 @@ export default function NestedGrid() {
         { id: "Documentation", name: "documentation_fr" }
     ];
 
-    function clickHandler() {
-        console.log("aasdfasdf");
-    }
+    // function clickHandler() {
+    //     console.log("aasdfasdf");
+    // }
 
     function FormRow() {
         return (
