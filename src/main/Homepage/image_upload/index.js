@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import "./index.css";
+import axios from "axios";
+import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
@@ -21,16 +23,39 @@ class ImageFR extends Component {
         super(props);
         this.state = {
             file: null,
+            preview:null,
             filetext: "Upload Image "
         };
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleState = this.handleState.bind(this);
     }
-    handleSubmit(event) {
+    handleState(event) {
         this.setState({
-            file: URL.createObjectURL(event.target.files[0]),
+            file:event.target.files[0],
+            preview: URL.createObjectURL(event.target.files[0]),
             filetext: null
+
         });
     }
+
+
+    handleSubmit(event) {
+        event.preventDefault();
+        console.log(this.state);
+        let form_data = new FormData();
+        form_data.append("file", this.state.file);
+        let url = "http://localhost:8000/api/image/";
+        axios
+            .post(url, form_data, {
+                headers: {
+                    "content-type": "multipart/form-data"
+                }
+            })
+            .then(res => {
+                console.log(res.data);
+            })
+            .catch(err => console.log(err));
+    };
 
     render() {
         return (
@@ -40,29 +65,36 @@ class ImageFR extends Component {
                         <Paper className={useStyles.paper}>
                             <div>
                                 {this.state.filetext}
-                                <img height="400" src={this.state.file} />
+                                <img height="400" src={this.state.preview} />
                             </div>
                         </Paper>
 
                         <div>
-                            <input
-                                accept="image/*"
-                                type="file"
-                                style={{ display: "none" }}
-                                onChange={this.handleSubmit}
-                                id="contained-button-file"
-                            />
+                            <form onSubmit={this.handleSubmit}>
+                                <input
+                                    accept="image/*"
+                                    type="file"
+                                    style={{ display: "none" }}
+                                    onChange={this.handleState}
+                                    id="contained-button-file"
+                                    required
+                                />
+
+                                <div>
+                                    <label htmlFor="contained-button-file">
+                                        <UploadButton />
+                                    </label>
+                                </div>
+                            </form>
 
                             <div>
-                                <label htmlFor="contained-button-file">
-                                    <UploadButton />
-                                </label>
-                            </div>
-                            <div
-                                onClick={() => {
-                                    console.log("onClick");
-                                }}>
-                                <ProcessButton />
+                                <Button
+                                    variant="contained"
+                                    color="primary"
+                                    onClick={this.handleSubmit}
+                                >
+                                    Process
+                                </Button>
                             </div>
                         </div>
                     </Grid>
