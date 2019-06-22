@@ -21,17 +21,21 @@ class EmbedNow extends Component {
 
     render() {
         const contents = this.state.contents;
+
         return (
             <div>
-				{
-					contents.map(data =>
-					{
-						<h1>{data.id}</h1>
-					})
-				}
-                <div>
-                    <img width="100" />
-                </div>
+                {contents.map(data => {
+                    console.log(data.id, data.fileurl);
+                    // eslint-disable-next-line no-unused-expressions
+                    return (
+                        <div>
+                            <div key={data.id}> {data.title} {data.fileurl}</div>
+                            <div>
+                                <img width="100" />
+                            </div>
+                        </div>
+                    );
+                })}
             </div>
         );
     }
