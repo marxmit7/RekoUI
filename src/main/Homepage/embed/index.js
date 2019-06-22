@@ -29,9 +29,9 @@ class EmbedNow extends Component {
                     // eslint-disable-next-line no-unused-expressions
                     return (
                         <div>
-                            <div key={data.id}> {data.title} {data.fileurl}</div>
+                            <div key={data.id}> {data.title} </div>
                             <div>
-                                <img width="100" />
+                                <img width="100" src={data.fileurl} />
                             </div>
                         </div>
                     );
