@@ -9,35 +9,26 @@ class EmbedNow extends Component {
         super(props);
 
         this.state = {
-			contents: [],
-			id_name:[],
-			file_url:[],
-
+            contents: [{ id: "", title: "", fileurl: "", created_on: "" }]
         };
     }
 
     componentDidMount() {
-        // var  self  =  this;
-        embedservice
-            .getEmbeddingsList()
-            .then(result => {
-                let contents = result.data.map(cloudData => {
-					// console.log((cloudData));
-					return (<div>{cloudData.id}</div>);
-                    // return <div > {JSON.stringify(cloudData, null, 2)}</div>;
-                });
-                this.setState({ contents: contents });
-                console.log("state", this.state.contents);
-            })
-            .catch(error => console.log(error));
+        embedservice.getEmbeddingsList().then(result => {
+            this.setState({ contents: result.data });
+        });
     }
 
     render() {
+        const contents = this.state.contents;
         return (
-			<div>
-			{this.state.contents}
-
-
+            <div>
+				{
+					contents.map(data =>
+					{
+						<h1>{data.id}</h1>
+					})
+				}
                 <div>
                     <img width="100" />
                 </div>
