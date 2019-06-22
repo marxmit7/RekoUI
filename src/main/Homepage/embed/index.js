@@ -1,10 +1,7 @@
 import React, { Component } from "react";
 import "./index.css";
 import EmbedService from "./result";
-import ImgMediaCard from "./card"
-
-
-
+import ImgMediaCard from "./card";
 const embedservice = new EmbedService();
 
 class EmbedNow extends Component {
@@ -26,16 +23,14 @@ class EmbedNow extends Component {
         const contents = this.state.contents;
 
         return (
-            <div>
+            <div >
                 {contents.map(data => {
                     console.log(data.id, data.fileurl);
                     // eslint-disable-next-line no-unused-expressions
                     return (
-                        <div key={data.id}>
-                            <div>
-                            <ImgMediaCard data={data} />
-                            <br></br>
-                            </div>
+                        <div style={{ display: "inline-block" }}>
+                        <div style={{ padding:"5px" }}><ImgMediaCard data={data} /></div>
+
                         </div>
                     );
                 })}
