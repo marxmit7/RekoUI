@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import "./index.css";
 import EmbedService from "./result";
+import ImgMediaCard from "./card"
+
+
 
 const embedservice = new EmbedService();
 
@@ -28,10 +31,10 @@ class EmbedNow extends Component {
                     console.log(data.id, data.fileurl);
                     // eslint-disable-next-line no-unused-expressions
                     return (
-                        <div>
-                            <div key={data.id}> {data.title} </div>
+                        <div key={data.id}>
                             <div>
-                                <img width="100" src={data.fileurl} />
+                            <ImgMediaCard data={data} />
+                            <br></br>
                             </div>
                         </div>
                     );
