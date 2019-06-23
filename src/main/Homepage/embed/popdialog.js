@@ -18,6 +18,9 @@ export default function EmbdeFormDialog() {
   function handleClose() {
     setOpen(false);
   }
+  function handleCreate(){
+
+  }
 
   return (
 	<div>
@@ -25,28 +28,27 @@ export default function EmbdeFormDialog() {
 	  <AddNewContent/>
       </div>
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-        <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
+        <DialogTitle id="form-dialog-title">Embed new face</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            To subscribe to this website, please enter your email address here. We will send updates
-            occasionally.
+            Keep the name of the image as ID name (e.g <b>Barack Obama.jpg</b> )
           </DialogContentText>
-          <TextField
-            autoFocus
-            margin="dense"
-            id="name"
-            label="Email Address"
-            type="email"
-            fullWidth
-          />
+		  <input
+		  accept="image/*"
+		  type="file"
+		//   style={{ display: "none" }}
+		//   onChange={this.handleState}
+		  id="contained-button-file"
+		  required
+	  />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} color="primary">
+          <Button onClick={handleClose} color="secondary">
             Cancel
-          </Button>
-          <Button onClick={handleClose} color="primary">
-            Subscribe
-          </Button>
+		  </Button>
+          <Button onClick={handleCreate} color="primary">
+            Create
+		  </Button>
         </DialogActions>
       </Dialog>
     </div>
