@@ -13,8 +13,6 @@ class App extends Component {
                 <div>
                     <BrowserRouter>
                     <NavBar />
-                    <br></br>
-                    <br></br>
                         <Switch>
                             <Route path="/" component={CoreBody} exact />
                             <Route path="/image" component={ImageFR} exact />

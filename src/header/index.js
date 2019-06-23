@@ -13,7 +13,9 @@ class NavBar extends Component {
                     </Navbar.Brand>
                 </Navbar>
                 <br></br>
-  
+                <br></br>
+                <br></br>
+
             </div>
         );
     }
