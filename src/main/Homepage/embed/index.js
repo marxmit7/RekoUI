@@ -4,7 +4,8 @@ import EmbedService from "./result";
 import ImgMediaCard from "./card";
 
 // import SearchAppBar from "../../utils/appbar"
-import {AddNewContent} from "../../utils/buttons"
+import {AddNewContent} from "./buttons";
+import EmbdeFormDialog from "./popdialog";
 const embedservice = new EmbedService();
 
 class EmbedNow extends Component {
@@ -27,7 +28,7 @@ class EmbedNow extends Component {
 
         return (
             <div >
-                <AddNewContent />
+            <EmbdeFormDialog/>
                 {contents.map(data => {
                     // console.log(data.id, data.fileurl);
                     // eslint-disable-next-line no-unused-expressions
@@ -39,6 +40,7 @@ class EmbedNow extends Component {
                         </div>
                     );
                 })}
+
             </div>
         );
     }
