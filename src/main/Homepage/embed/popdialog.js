@@ -20,7 +20,7 @@ export default function EmbdeFormDialog() {
         setOpen(false);
     }
     function handleState(event)
-    {   console.log(event.target.files[0])
+    {
         file = event.target.files[0]
     }
     function handleCreate(event) {
@@ -38,6 +38,8 @@ export default function EmbdeFormDialog() {
                 console.log(response);
                 })
             .catch(console.log);
+            
+            window.location.reload();
     }
 
     return (

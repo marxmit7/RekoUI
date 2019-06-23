@@ -30,8 +30,6 @@ class EmbedNow extends Component {
             <div >
             <EmbdeFormDialog/>
                 {contents.map(data => {
-                    // console.log(data.id, data.fileurl);
-                    // eslint-disable-next-line no-unused-expressions
                     return (
                         <div style={{ display: "inline-block" }} key = {data.id}>
                             <div style={{ padding: "5px" }}>
