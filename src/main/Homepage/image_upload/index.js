@@ -40,7 +40,6 @@ class ImageFR extends Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        console.log(this.state);
         let form_data = new FormData();
         form_data.append("file", this.state.file);
         let url = "http://localhost:8000/api/image/";
