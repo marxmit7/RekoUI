@@ -7,7 +7,7 @@ export default class FeedBackService  {
     constructor(){}
 
     getFBList() {
-        const url = `${API_URL}/api/faceid/`;
+        const url = `${API_URL}/api/feedback/`;
         return axios.get(url).then(response => response.data);
     }
 }
