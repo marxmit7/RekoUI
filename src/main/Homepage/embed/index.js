@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./index.css";
-import EmbedService from "./result";
+import EmbedService from "./EmbedingsList";
 import ImgMediaCard from "./card";
 
 // import SearchAppBar from "../../utils/appbar"

@@ -1,12 +1,35 @@
 import React, { Component } from "react";
+import FeedBackService from "./FeedBackDB";
+const fbservice = new FeedBackService();
 
+// https://djangobook.com/advanced-models/
 class FeedBack extends Component {
-    render() {
-        return (
-			<div>
+    constructor(props) {
+        super(props);
 
-            </div>
-        );
+        this.state = {
+            contents: [
+                {
+                    id: "",
+                    title: "",
+                    fileurl: "",
+                    created_on: "",
+                    upvote: "",
+                    downvote: "",
+                    suggested: ""
+                }
+            ]
+        };
+    }
+
+    componentDidMount() {
+        fbservice.getFBList().then(result => {
+            this.setState({ contents: result.data });
+        });
+    }
+
+    render() {
+        return <div />;
     }
 }
 
