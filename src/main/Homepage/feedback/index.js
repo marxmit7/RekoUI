@@ -8,28 +8,27 @@ class FeedBack extends Component {
         super(props);
 
         this.state = {
-            contents: [
-                {
-                    id: "",
-                    title: "",
-                    fileurl: "",
-                    created_on: "",
-                    upvote: "",
-                    downvote: "",
-                    suggested: ""
-                }
-            ]
+            contents: [{ id: "", title: "", fileurl: "", created_on: "" }]
         };
     }
 
     componentDidMount() {
         fbservice.getFBList().then(result => {
             this.setState({ contents: result.data });
-        });
+        }
+        );
+
     }
 
     render() {
-        return <div />;
+        const contents = this.state.contents;
+        let randomIndex = Math.floor(Math.random() * contents.length);
+        let indexId = contents[randomIndex]["id"];
+        console.log(indexId,contents[randomIndex]);
+
+        return (
+            <div> feedback {indexId}</div>
+        )
     }
 }
 

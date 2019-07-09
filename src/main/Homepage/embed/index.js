@@ -4,7 +4,7 @@ import EmbedService from "./EmbedingsList";
 import ImgMediaCard from "./card";
 
 // import SearchAppBar from "../../utils/appbar"
-import {AddNewContent} from "./buttons";
+// import {AddNewContent} from "./buttons";
 import EmbdeFormDialog from "./popdialog";
 const embedservice = new EmbedService();
 
@@ -21,10 +21,13 @@ class EmbedNow extends Component {
         embedservice.getEmbeddingsList().then(result => {
             this.setState({ contents: result.data });
         });
+        // console.log(this.state.contents)
+
     }
 
     render() {
         const contents = this.state.contents;
+        // console.log(this.state.contents)
 
         return (
             <div >
