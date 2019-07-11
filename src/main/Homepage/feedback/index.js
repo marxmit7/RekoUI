@@ -8,28 +8,30 @@ class FeedBack extends Component {
         super(props);
 
         this.state = {
-            EmbeddingContents: [{ id: "", title: "", fileurl: "", created_on: "" }]
-
+            EmbeddingContents: [
+                { id: null, title: null, fileurl: null, created_on: null }
+            ],
+            test:[{data:null,}],
         };
     }
 
     componentDidMount() {
         fbservice.getEmeddingList().then(result => {
             this.setState({ EmbeddingContents: result.data });
-        }
-        );
-
+        });
+        fbservice.getFeedbackList().then(result => {
+            this.setState({ test: result.data });
+        });
     }
 
     render() {
         const EmbeddingContents = this.state.EmbeddingContents;
         let randomIndex = Math.floor(Math.random() * EmbeddingContents.length);
         let indexId = EmbeddingContents[randomIndex]["id"];
-        console.log(indexId,EmbeddingContents[randomIndex]);
+        // console.log(indexId, EmbeddingContents[randomIndex]);
+        console.log(this.state.test.data,this.state.test.fileurl);
 
-        return (
-            <div> feedback {indexId}</div>
-        )
+        return <div> feedback {indexId}</div>;
     }
 }
 
