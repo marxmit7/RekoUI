@@ -62,14 +62,14 @@ class ImageFR extends Component {
             <div className={useStyles.root}>
                 <Grid container spacing={3}>
                     <Grid item xs={12} sm={6}>
-                        <Paper className={useStyles.paper}>
-                            <div>
+                        <Paper>
+                            <div style={{ textAlign: "center" }}>
                                 {this.state.filetext}
                                 <img height="400" src={this.state.preview} />
                             </div>
                         </Paper>
 
-                        <div>
+                        <div style={{ textAlign: "center" }}>
                             <form onSubmit={this.handleSubmit}>
                                 <input
                                     accept="image/*"
