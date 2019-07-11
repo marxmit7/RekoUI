@@ -6,7 +6,11 @@ const API_URL = "http://localhost:8000";
 export default class FeedBackService  {
     constructor(){}
 
-    getFBList() {
+    getEmeddingList() {
+        const url = `${API_URL}/api/faceid/`;
+        return axios.get(url).then(response => response.data);
+    };
+    getFeedbackList() {
         const url = `${API_URL}/api/feedback/`;
         return axios.get(url).then(response => response.data);
     }
