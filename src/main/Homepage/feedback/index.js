@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import FeedBackService from "./FeedBackDB";
+import Maincard from "./cardview";
 const fbservice = new FeedBackService();
-
+const API_URL = "http://localhost:8000";
 // https://djangobook.com/advanced-models/
 class FeedBack extends Component {
     constructor(props) {
@@ -11,7 +12,7 @@ class FeedBack extends Component {
             EmbeddingContents: [
                 { id: null, title: null, fileurl: null, created_on: null }
             ],
-            test:[{data:null,}],
+            test: [{ data: null }]
         };
     }
 
@@ -29,9 +30,18 @@ class FeedBack extends Component {
         let randomIndex = Math.floor(Math.random() * EmbeddingContents.length);
         let indexId = EmbeddingContents[randomIndex]["id"];
         // console.log(indexId, EmbeddingContents[randomIndex]);
-        console.log(this.state.test.data,this.state.test.fileurl);
+        console.log(this.state.test.data,API_URL+ this.state.test.fileurl);
 
-        return <div> feedback {indexId}</div>;
+
+        return (
+            <div>
+               <div> <Maincard fileurl={API_URL + this.state.test.fileurl} data = {this.state.test.data}/></div>
+                <div>feedback {indexId}</div>
+                {/*{JSON.stringify( this.state.test.data,null, 4)}
+        {this.state.test.fileurl} */}
+
+            </div>
+        );
     }
 }
 
