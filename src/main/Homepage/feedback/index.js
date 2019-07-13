@@ -12,7 +12,7 @@ class FeedBack extends Component {
             EmbeddingContents: [
                 { id: null, title: null, fileurl: null, created_on: null }
             ],
-            test: [{ data: null }]
+            test: []
         };
     }
 
@@ -35,15 +35,14 @@ class FeedBack extends Component {
         return (
             <div>
                 <div>
-                    {" "}
+
                     <Maincard
                         fileurl={API_URL + this.state.test.fileurl}
                         data={this.state.test.data}
                     />
                 </div>
                 <div>feedback {indexId}</div>
-                {/*{JSON.stringify( this.state.test.data,null, 4)}
-        {this.state.test.fileurl} */}
+
             </div>
         );
     }
