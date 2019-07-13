@@ -30,16 +30,20 @@ class FeedBack extends Component {
         let randomIndex = Math.floor(Math.random() * EmbeddingContents.length);
         let indexId = EmbeddingContents[randomIndex]["id"];
         // console.log(indexId, EmbeddingContents[randomIndex]);
-        console.log(this.state.test.data,API_URL+ this.state.test.fileurl);
-
+        // console.log(this.state.test.data,API_URL+ this.state.test.fileurl);
 
         return (
             <div>
-               <div> <Maincard fileurl={API_URL + this.state.test.fileurl} data = {this.state.test.data}/></div>
+                <div>
+                    {" "}
+                    <Maincard
+                        fileurl={API_URL + this.state.test.fileurl}
+                        data={this.state.test.data}
+                    />
+                </div>
                 <div>feedback {indexId}</div>
                 {/*{JSON.stringify( this.state.test.data,null, 4)}
         {this.state.test.fileurl} */}
-
             </div>
         );
     }

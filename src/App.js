@@ -6,7 +6,6 @@ import EmbedNow from "./main/Homepage/embed/index";
 import VideoFR from "./main/Homepage/video_upload/index";
 import FeedBack from "./main/Homepage/feedback/index";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-
 class App extends Component {
     render() {
         return (
