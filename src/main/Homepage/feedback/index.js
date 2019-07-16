@@ -41,7 +41,7 @@ class FeedBack extends Component {
                         data={this.state.test.data}
                     />
                 </div>
-                <div>feedback {indexId}</div>
+                <div>feedback </div>
 
             </div>
         );

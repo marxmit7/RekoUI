@@ -19,7 +19,7 @@ const useStyles = makeStyles({
 export default function Maincard(props) {
     const classes = useStyles();
     var pingDividerMain;
-    if(typeof props.data !=='undefined')
+    if(typeof props.data !=='undefined') // It checks wether the argument passed contains any array data or not
     {
       pingDividerMain = <DividerMain  data={props.data}/>;
     }
