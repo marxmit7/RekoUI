@@ -17,8 +17,8 @@ export default class FeedBackService {
     postFeedbackList(postedValue) { //post to update or add suggested name in feedback feature
         const url = `${API_URL}/api/feedback/`;
         let form_data = new FormData();
-        form_data.append("data", postedValue);
-        return axios.post(url, postedValue, {
+        form_data.append("data", JSON.stringify(postedValue));
+        return axios.post(url, form_data, {
             headers: {
                 "content-type": "multipart/form-data"
             }
