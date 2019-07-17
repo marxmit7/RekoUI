@@ -7,6 +7,8 @@ import Avatar from "@material-ui/core/Avatar";
 import Icon from "@material-ui/core/Icon";
 import Divider from "@material-ui/core/Divider";
 import IconButton from "@material-ui/core/IconButton";
+import FeedBackService from "./FeedBackDB";
+const postFBservice = new FeedBackService();
 
 export class DividerMain extends Component {
     constructor(props) {
@@ -15,17 +17,31 @@ export class DividerMain extends Component {
         this.state = {
             contents: null
         };
-		this.handleUpvoteClick = this.handleUpvoteClick.bind(this);
-		this.handleDownvoteClick = this.handleDownvoteClick.bind(this);
-	}
+        this.handleUpvoteClick = this.handleUpvoteClick.bind(this);
+        this.handleDownvoteClick = this.handleDownvoteClick.bind(this);
+    }
 
-	handleUpvoteClick(feed,uvote) {
-	  console.log("upvote ",feed,uvote)
-	}
-	handleDownvoteClick(feed,dvote) {
-		console.log("Downvote ",feed,dvote)
-	  }
-
+    handleUpvoteClick(valueSent) {
+        const dataToBeSent = {
+            id: valueSent.id,
+            suggestedName: valueSent.suggestedName,
+            upvote: valueSent.upvote + 1,
+            downvote: valueSent.downvote,
+            feedback: valueSent.feedback
+        };
+        // console.log(dataToBeSent);
+        postFBservice.postFeedbackList(dataToBeSent);
+    }
+    handleDownvoteClick(valueSent) {
+        const dataToBeSent = {
+            id: valueSent.id,
+            suggestedName: valueSent.suggestedName,
+            upvote: valueSent.upvote + -1,
+            downvote: valueSent.downvote,
+            feedback: valueSent.feedback
+		};
+		console.log(dataToBeSent);
+    }
 
     componentWillMount() {
         this.setState({ contents: this.props.data });
@@ -43,9 +59,11 @@ export class DividerMain extends Component {
                     {receivedData.map(out => (
                         <ListItem key={out.id}>
                             <ListItemAvatar>
-                                <IconButton onClick={() => this.handleUpvoteClick(out.id,out.upvote)}>
+                                <IconButton
+                                    onClick={() => this.handleUpvoteClick(out)}
+                                >
                                     {" "}
-                                    <Icon>thumb_up amit</Icon>
+                                    <Icon>thumb_up</Icon>
                                 </IconButton>
                             </ListItemAvatar>
                             <ListItemText
@@ -53,7 +71,11 @@ export class DividerMain extends Component {
                                 secondary=" "
                             />
                             <ListItemAvatar>
-                                <IconButton onClick={() => this.handleDownvoteClick(out.id,out.downvote)}>
+                                <IconButton
+                                    onClick={() =>
+                                        this.handleDownvoteClick(out)
+                                    }
+                                >
                                     {" "}
                                     <Icon>thumb_down</Icon>
                                 </IconButton>
