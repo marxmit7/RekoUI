@@ -15,7 +15,18 @@ export class DividerMain extends Component {
         this.state = {
             contents: null
         };
-    }
+		this.handleUpvoteClick = this.handleUpvoteClick.bind(this);
+		this.handleDownvoteClick = this.handleDownvoteClick.bind(this);
+	}
+
+	handleUpvoteClick(feed,uvote) {
+	  console.log("upvote ",feed,uvote)
+	}
+	handleDownvoteClick(feed,dvote) {
+		console.log("Downvote ",feed,dvote)
+	  }
+
+
     componentWillMount() {
         this.setState({ contents: this.props.data });
     }
@@ -32,9 +43,9 @@ export class DividerMain extends Component {
                     {receivedData.map(out => (
                         <ListItem key={out.id}>
                             <ListItemAvatar>
-                                <IconButton>
+                                <IconButton onClick={() => this.handleUpvoteClick(out.id,out.upvote)}>
                                     {" "}
-                                    <Icon>thumb_up</Icon>
+                                    <Icon>thumb_up amit</Icon>
                                 </IconButton>
                             </ListItemAvatar>
                             <ListItemText
@@ -42,7 +53,7 @@ export class DividerMain extends Component {
                                 secondary=" "
                             />
                             <ListItemAvatar>
-                                <IconButton>
+                                <IconButton onClick={() => this.handleDownvoteClick(out.id,out.downvote)}>
                                     {" "}
                                     <Icon>thumb_down</Icon>
                                 </IconButton>

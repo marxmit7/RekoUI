@@ -1,11 +1,19 @@
 .maincardview {
-    /* position: absolute; */
-    /* margin: auto;
+    position: absolute;
+     margin: auto;
     top: 0;
     right: 0;
     bottom: 0;
-    left: 0; */
-    /* width: 600px;
-	height: 600px; */
+    left: 0;
+    width: 800px;
+	height: 350px;
 	display: flex;
+}
+
+.MuiCardActions-root
+{
+    /* background: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%); */
+    /* background-image: radial-gradient( circle farthest-corner at 12.3% 19.3%,  rgba(85,88,218,1) 0%, rgba(95,209,249,1) 100.2% ); */
+    /* background-image: linear-gradient(to top, #0c3483 0%, #a2b6df 100%, #6b8cce 100%, #a2b6df 100%); */
+    /* background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(90,92,106,1) 0%, rgba(32,45,58,1) 81.3% ); */
 }
