@@ -3,11 +3,11 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
-import Avatar from "@material-ui/core/Avatar";
 import Icon from "@material-ui/core/Icon";
 import Divider from "@material-ui/core/Divider";
 import IconButton from "@material-ui/core/IconButton";
 import FeedBackService from "./FeedBackDB";
+
 const postFBservice = new FeedBackService();
 
 export class DividerMain extends Component {
@@ -27,7 +27,7 @@ export class DividerMain extends Component {
             suggestedName: valueSent.suggestedName,
             upvote: valueSent.upvote + 1,
             downvote: valueSent.downvote,
-            feedback: valueSent.feedback
+            feedback_id: valueSent.feedback
         };
         // console.log(dataToBeSent);
         postFBservice.postFeedbackList(dataToBeSent);
@@ -36,11 +36,11 @@ export class DividerMain extends Component {
         const dataToBeSent = {
             id: valueSent.id,
             suggestedName: valueSent.suggestedName,
-            upvote: valueSent.upvote + -1,
+            upvote: valueSent.upvote - 1,
             downvote: valueSent.downvote,
-            feedback: valueSent.feedback
-		};
-		console.log(dataToBeSent);
+            feedback_id: valueSent.feedback
+        };
+        postFBservice.postFeedbackList(dataToBeSent);
     }
 
     componentWillMount() {
