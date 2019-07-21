@@ -1,8 +1,12 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Frontend for the Rekognition
 
 ## Available Scripts
+`git clone https://github.com/pymit/RekoUI`
 
 In the project directory, you can run:
+
+### `npm install`
+To install all the npm packages.
 
 ### `npm start`
 
