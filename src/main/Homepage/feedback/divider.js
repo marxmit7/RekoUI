@@ -7,6 +7,7 @@ import Icon from "@material-ui/core/Icon";
 import Divider from "@material-ui/core/Divider";
 import IconButton from "@material-ui/core/IconButton";
 import FeedBackService from "./FeedBackDB";
+import NameInput from "./nameInput";
 
 const postFBservice = new FeedBackService();
 
@@ -15,7 +16,9 @@ export class DividerMain extends Component {
         super(props);
 
         this.state = {
-            contents: null
+            contents: null,
+            input_feedback_id: null,
+            isValueSet: false
         };
         this.handleUpvoteClick = this.handleUpvoteClick.bind(this);
         this.handleDownvoteClick = this.handleDownvoteClick.bind(this);
@@ -56,33 +59,43 @@ export class DividerMain extends Component {
         return (
             <div>
                 <List>
-                    {receivedData.map(out => (
-                        <ListItem key={out.id}>
-                            <ListItemAvatar>
-                                <IconButton
-                                    onClick={() => this.handleUpvoteClick(out)}
-                                >
-                                    {" "}
-                                    <Icon>thumb_up</Icon>
-                                </IconButton>
-                            </ListItemAvatar>
-                            <ListItemText
-                                primary={out.suggestedName}
-                                secondary=" "
-                            />
-                            <ListItemAvatar>
-                                <IconButton
-                                    onClick={() =>
-                                        this.handleDownvoteClick(out)
-                                    }
-                                >
-                                    {" "}
-                                    <Icon>thumb_down</Icon>
-                                </IconButton>
-                            </ListItemAvatar>
-                            <Divider variant="inset" />
-                        </ListItem>
-                    ))}
+                    {receivedData.map(out => {
+                        !this.isValueSet
+                            ? (this.state.input_feedback_id = out.feedback)
+                            : (this.isValueSet = true);
+                        return (
+                            <ListItem key={out.id}>
+                                <ListItemAvatar>
+                                    <IconButton
+                                        onClick={() =>
+                                            this.handleUpvoteClick(out)
+                                        }
+                                    >
+                                        <Icon>thumb_up</Icon>
+                                    </IconButton>
+                                </ListItemAvatar>
+                                <ListItemText
+                                    primary={out.suggestedName}
+                                    secondary=" "
+                                />
+                                <ListItemAvatar>
+                                    <IconButton
+                                        onClick={() =>
+                                            this.handleDownvoteClick(out)
+                                        }
+                                    >
+                                        {" "}
+                                        <Icon>thumb_down</Icon>
+                                    </IconButton>
+                                </ListItemAvatar>
+                                <Divider variant="inset" />
+
+                                {/* {!this.isValueSet?this.setState({input_feedback_id :out.feedback}):this.isValueSet=true} */}
+                            </ListItem>
+                        );
+                    })}
+                    {/*console.log(this.state.input_feedback_id) */}
+                    <NameInput feedback_id_value = {this.state.input_feedback_id}/>
                 </List>
             </div>
         );
