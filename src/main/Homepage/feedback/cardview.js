@@ -19,13 +19,11 @@ const useStyles = makeStyles({
 export default function Maincard(props) {
     const classes = useStyles();
     var pingDividerMain;
-    if(typeof props.data !=='undefined')
-    {
-      pingDividerMain = <DividerMain  data={props.data}/>;
-    }
-    else
-    {
-      pingDividerMain =  "";
+    if (typeof props.data !== "undefined") {
+        // It checks wether the argument passed contains any array data or not
+        pingDividerMain = <DividerMain data={props.data} />;
+    } else {
+        pingDividerMain = "";
     }
 
     return (
@@ -40,19 +38,14 @@ export default function Maincard(props) {
                         />
                     </CardActionArea>
                     <CardActions>
-                        <Button size="small" color="primary">
-                            Share
-                        </Button>
-                        <Button size="small" color="primary">
-                            Learn More
-                        </Button>
+                        <Button size="small" color="primary" />{" "}
+                        <Button size="small" color="primary" />
+                        <Button size="small" color="primary" />{" "}
+                        <Button size="small" color="primary" />
                     </CardActions>
                 </Card>
             </div>
-            <div>
-
-          {pingDividerMain}
-            </div>
+            <div>{pingDividerMain}</div>
         </div>
     );
 }
