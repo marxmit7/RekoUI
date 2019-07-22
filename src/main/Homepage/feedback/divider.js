@@ -39,8 +39,8 @@ export class DividerMain extends Component {
         const dataToBeSent = {
             id: valueSent.id,
             suggestedName: valueSent.suggestedName,
-            upvote: valueSent.upvote - 1,
-            downvote: valueSent.downvote,
+            upvote: valueSent.upvote,
+            downvote: valueSent.downvote + 1,
             feedback_id: valueSent.feedback
         };
         postFBservice.postFeedbackList(dataToBeSent);
@@ -95,7 +95,9 @@ export class DividerMain extends Component {
                         );
                     })}
                     {/*console.log(this.state.input_feedback_id) */}
-                    <NameInput feedback_id_value = {this.state.input_feedback_id}/>
+                    <NameInput
+                        feedback_id_value={this.state.input_feedback_id}
+                    />
                 </List>
             </div>
         );
