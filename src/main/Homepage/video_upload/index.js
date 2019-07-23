@@ -5,8 +5,10 @@ import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
-import { UploadButton,AddNewLink } from "../../utils/buttons";
-
+import { UploadButton, AddNewLink } from "../../utils/buttons";
+import YouTubePlayer from "./yt";
+import YTFormDialog from "./formYTlink";
+import VideoViewBox from "./uploadedVideoViewBox";
 // https://blog.teamtreehouse.com/building-custom-controls-for-html5-videos
 class VideoFR extends Component {
     constructor(props) {
@@ -16,16 +18,26 @@ class VideoFR extends Component {
             preview: null,
             fileid: null,
             filetext: "Upload Video ",
-            resultjson: "Output will be shown here"
+            resultjson: "Output will be shown here",
+            link: null,
+            showYTComponent: false,
+            defaultVideoBox: true
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleState = this.handleState.bind(this);
+        this._onAddLinkButtonClick = this._onAddLinkButtonClick.bind(this);
     }
     handleState(event) {
         this.setState({
             file: event.target.files[0],
             preview: URL.createObjectURL(event.target.files[0]),
             filetext: null
+        });
+    }
+
+    _onAddLinkButtonClick() {
+        this.setState({
+            defaultVideoBox: false
         });
     }
 
@@ -50,21 +62,18 @@ class VideoFR extends Component {
     }
 
     render() {
+        const link = "https://www.youtube.com/embed/hbAUwi4D3Ew";
         return (
             <div>
                 <Grid container spacing={3}>
                     <Grid item xs={12} sm={6}>
                         <Paper>
-                            <div style={{ textAlign: "center" }}>
-                                {this.state.filetext}
-                                <video
-                                    controls
-                                    width="712"
-                                    height="400"
-                                    src={this.state.preview}
-                                    type="video/mp4"
+                            {this.state.defaultVideoBox ? (
+                                <VideoViewBox
+                                    filetext={this.state.filetext}
+                                    preview={this.state.preview}
                                 />
-                            </div>
+                            ) : <YouTubePlayer link={link} />}
                         </Paper>
 
                         <div style={{ textAlign: "center" }}>
@@ -77,23 +86,30 @@ class VideoFR extends Component {
                                     id="contained-button-file"
                                     required
                                 />
-
-                                <div>
-                                    <label htmlFor="contained-button-file">
-                                        <UploadButton />
-                                    </label>
-                                    <AddNewLink />
-                                    <Button
-                                        variant="contained"
-                                        color="primary"
-                                        onClick={this.handleSubmit}
-                                    >
-                                        Process
-                                    </Button>
-                                </div>
                             </form>
                         </div>
+                        <div style={{ textAlign: "center" }}>
+                            <label htmlFor="contained-button-file">
+                                <UploadButton />
+                            </label>
+
+                            <label
+                                htmlFor="contained-link"
+                                onClick={this._onAddLinkButtonClick}
+                            >
+                                <YTFormDialog />
+                            </label>
+
+                            <Button
+                                variant="contained"
+                                color="primary"
+                                onClick={this.handleSubmit}
+                            >
+                                Process
+                            </Button>
+                        </div>
                     </Grid>
+
                     <Grid item xs={12} sm={6}>
                         <Paper>
                             <div>
