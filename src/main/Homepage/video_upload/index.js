@@ -38,12 +38,13 @@ class VideoFR extends Component {
 
     _onToggleClick() {
         this.setState({
-            defaultVideoBox: false,
+            defaultVideoBox: false
         });
-
     }
 
-    handleLinkChangeValue(evalue) {this.setState({YTlink: evalue});}
+    handleLinkChangeValue(evalue) {
+        this.setState({ YTlink: evalue });
+    }
 
     handleSubmit(event) {
         event.preventDefault();
@@ -66,7 +67,6 @@ class VideoFR extends Component {
     }
 
     render() {
-
         return (
             <div>
                 <Grid container spacing={3}>
@@ -77,7 +77,9 @@ class VideoFR extends Component {
                                     filetext={this.state.filetext}
                                     preview={this.state.preview}
                                 />
-                            ) : <YouTubePlayer link={this.state.YTlink} />}
+                            ) : (
+                                <YouTubePlayer link={this.state.YTlink} />
+                            )}
                         </Paper>
 
                         <div style={{ textAlign: "center" }}>
@@ -101,9 +103,10 @@ class VideoFR extends Component {
                                 htmlFor="contained-link"
                                 onClick={this._onToggleClick}
                             >
-                                <YTFormDialog onChangeValue={this.handleLinkChangeValue}/>
+                                <YTFormDialog
+                                    onChangeValue={this.handleLinkChangeValue}
+                                />
                             </label>
-                            {console.log(this.state.link)}
 
                             <Button
                                 variant="contained"
