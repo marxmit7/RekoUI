@@ -19,13 +19,14 @@ class VideoFR extends Component {
             fileid: null,
             filetext: "Upload Video ",
             resultjson: "Output will be shown here",
-            link: null,
+            YTlink: null,
             showYTComponent: false,
             defaultVideoBox: true
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleState = this.handleState.bind(this);
-        this._onAddLinkButtonClick = this._onAddLinkButtonClick.bind(this);
+        this._onToggleClick = this._onToggleClick.bind(this);
+        this.handleLinkChangeValue = this.handleLinkChangeValue.bind(this);
     }
     handleState(event) {
         this.setState({
@@ -35,11 +36,14 @@ class VideoFR extends Component {
         });
     }
 
-    _onAddLinkButtonClick() {
+    _onToggleClick() {
         this.setState({
-            defaultVideoBox: false
+            defaultVideoBox: false,
         });
+
     }
+
+    handleLinkChangeValue(evalue) {this.setState({YTlink: evalue});}
 
     handleSubmit(event) {
         event.preventDefault();
@@ -62,7 +66,7 @@ class VideoFR extends Component {
     }
 
     render() {
-        const link = "https://www.youtube.com/embed/hbAUwi4D3Ew";
+
         return (
             <div>
                 <Grid container spacing={3}>
@@ -73,7 +77,7 @@ class VideoFR extends Component {
                                     filetext={this.state.filetext}
                                     preview={this.state.preview}
                                 />
-                            ) : <YouTubePlayer link={link} />}
+                            ) : <YouTubePlayer link={this.state.YTlink} />}
                         </Paper>
 
                         <div style={{ textAlign: "center" }}>
@@ -95,10 +99,11 @@ class VideoFR extends Component {
 
                             <label
                                 htmlFor="contained-link"
-                                onClick={this._onAddLinkButtonClick}
+                                onClick={this._onToggleClick}
                             >
-                                <YTFormDialog />
+                                <YTFormDialog onChangeValue={this.handleLinkChangeValue}/>
                             </label>
+                            {console.log(this.state.link)}
 
                             <Button
                                 variant="contained"

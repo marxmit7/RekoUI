@@ -1,51 +1,73 @@
-import React from 'react';
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
+import React from "react";
+import Button from "@material-ui/core/Button";
+import TextField from "@material-ui/core/TextField";
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
 import YouTubePlayer from "./yt";
-export default function YTFormDialog() {
-  const [open, setOpen] = React.useState(false);
+export default function YTFormDialog(props) {
+    const [open, setOpen] = React.useState(false);
+    var link =null;
 
-  var showYTComponent= false;
+    function handleClickOpen() {
+        setOpen(true);
+    }
 
-  function handleClickOpen() {
-    setOpen(true);
-  }
+    function YouTubeGetID(url){
+      url = url.split(/(vi\/|v=|\/v\/|youtu\.be\/|\/embed\/)/);
+      return (url[2] !== undefined) ? url[2].split(/[^0-9a-z_\-]/i)[0] : url[0];
+   }
 
-  function handleClose() {
+   function handleOkClose(event) {
+    var id = YouTubeGetID(link);
+    console.log(id,link);
+    var embedlink = "https://www.youtube.com/embed/"+id;
+    props.onChangeValue(embedlink);
     setOpen(false);
-  }
-  function _onAddLinkButtonClick() {
-		showYTComponent= true;
-  }
+}
+function handleClose(event) {
 
-  return (
-    <div>
-      <Button  variant="contained" onClick={handleClickOpen}>
-        Add YouTube Link
-      </Button>
-      <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-        <DialogContent>
+    setOpen(false);
+}
+   function  handleChange(event) {
+          link = event.target.value;
+          // props.onChangeValue(link);
 
-          <TextField
-            autoFocus
-            margin="dense"
-            id="YTLink"
-            label="YouTube Link"
-            fullWidth
-          />
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose} color="primary">
-            Cancel
-          </Button>
-          <Button onClick={handleClose} color="primary">
-            ok
-          </Button>
-        </DialogActions>
-      </Dialog>
-    </div>
-  );
+  };
+
+
+    return (
+
+        <div>
+            <Button variant="contained" onClick={handleClickOpen}>
+                Add YouTube Link
+            </Button>
+            <Dialog
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="form-dialog-title"
+            >
+                <DialogContent>
+                    <TextField
+                        autoFocus
+                        margin="dense"
+                        id="YTLink"
+                        label="YouTube Link"
+                        fullWidth
+                        onChange={handleChange}
+                    />
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={handleClose} color="primary">
+                        Cancel
+                    </Button>
+                    <label htmlFor="YTLink">
+                        <Button onClick={handleOkClose} color="primary">
+                            ok
+                        </Button>
+                    </label>
+                </DialogActions>
+            </Dialog>
+        </div>
+    );
 }
