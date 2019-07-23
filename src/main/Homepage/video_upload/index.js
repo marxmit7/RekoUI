@@ -5,7 +5,7 @@ import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
-import { UploadButton } from "../../utils/buttons";
+import { UploadButton,AddNewLink } from "../../utils/buttons";
 
 // https://blog.teamtreehouse.com/building-custom-controls-for-html5-videos
 class VideoFR extends Component {
@@ -82,6 +82,7 @@ class VideoFR extends Component {
                                     <label htmlFor="contained-button-file">
                                         <UploadButton />
                                     </label>
+                                    <AddNewLink />
                                     <Button
                                         variant="contained"
                                         color="primary"

@@ -77,4 +77,21 @@ function AddNewContent() {
     );
 }
 
-export { UploadButton, ProcessButton, AddNewContent };
+function AddNewLink() {
+    const classes = useStyles();
+
+    return (
+
+        <Button
+            variant="contained"
+            href="#contained-buttons"
+            className={classes.button}
+        >
+           Add Youtube Link
+        </Button>
+   
+
+    );
+}
+
+export { UploadButton, ProcessButton, AddNewContent, AddNewLink };
