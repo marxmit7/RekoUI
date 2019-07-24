@@ -44,6 +44,20 @@ class VideoFR extends Component {
 
     handleLinkChangeValue(evalue) {
         this.setState({ YTlink: evalue });
+        let form_data = new FormData();
+        let url = "http://localhost:8000/api/ytstream/";
+        form_data.set('StreamLink',JSON.stringify(evalue));
+     axios.post(url, form_data, {
+             headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+          }}).then(response => {
+                this.setState({
+                    fileid: response.data,
+                    resultjson: JSON.stringify(response.data, null, 2)
+                });
+            })
+            .catch(console.log);
+
     }
 
     handleSubmit(event) {
