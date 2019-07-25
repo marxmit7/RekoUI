@@ -53,7 +53,7 @@ class VideoFR extends Component {
           }}).then(response => {
                 this.setState({
                     fileid: response.data,
-                    resultjson: JSON.stringify(response.data, null, 2)
+                    resultjson: (JSON.stringify(response.data, null, 2)).replace(/\\/g, ""), // here json output need to be reformatted
                 });
             })
             .catch(console.log);
