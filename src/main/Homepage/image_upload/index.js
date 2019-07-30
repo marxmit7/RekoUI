@@ -6,6 +6,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import { UploadButton } from "../../utils/buttons";
+import ImageView from "./defaultFR/imageView";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -62,12 +63,10 @@ class ImageFR extends Component {
             <div className={useStyles.root}>
                 <Grid container spacing={3}>
                     <Grid item xs={12} sm={6}>
-                        <Paper>
-                            <div style={{ textAlign: "center" }}>
-                                {this.state.filetext}
-                                <img height="400" src={this.state.preview} />
-                            </div>
-                        </Paper>
+                        <ImageView
+                            filetext={this.state.filetext}
+                            preview={this.state.preview}
+                        />
 
                         <div style={{ textAlign: "center" }}>
                             <form onSubmit={this.handleSubmit}>
@@ -93,6 +92,15 @@ class ImageFR extends Component {
                                     </Button>
                                 </div>
                             </form>
+
+                            <din>
+                                <Button
+                                    variant="contained"
+                                    onClick={this.handleSimiLarFace}
+                                >
+                                    Similar Face
+                                </Button>
+                            </din>
                         </div>
                     </Grid>
                     <Grid item xs={12} sm={6}>
