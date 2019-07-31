@@ -9,6 +9,7 @@ import { UploadButton } from "../../utils/buttons";
 import DefaultImageFRView from "./defaultFR/imageView";
 import SimFaceForm from "./simface/SimFaceDialogeForm";
 import SimFaceView from "./simface/SimFaceView";
+import ViewFaceResult from "./simface/ShowResult";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -30,6 +31,7 @@ class ImageFR extends Component {
             renderView: "defaultView",
             filetext: "Upload Image ",
             resultjson: "Output will be shown here",
+            simlarFaceResult: null,
             referenceImage: null,
             compareImage: null,
             simFacePOST: false
@@ -90,7 +92,8 @@ class ImageFR extends Component {
             })
             .then(response => {
                 this.setState({
-                    resultjson: JSON.stringify(response.data, null, 2)
+                    simlarFaceResult: response.data,
+                    resultjson: "Result"
                 });
             })
             .catch(console.log);
@@ -165,6 +168,13 @@ class ImageFR extends Component {
                             <div>
                                 {" "}
                                 <pre>{this.state.resultjson}</pre>
+                                {this.state.simlarFaceResult !== null ? (
+                                    <ViewFaceResult
+                                        responseResult={
+                                            this.state.simlarFaceResult
+                                        }
+                                    />
+                                ) : null}
                             </div>
                         </Paper>
                     </Grid>
