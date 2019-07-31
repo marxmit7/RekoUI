@@ -7,6 +7,7 @@ import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import { UploadButton } from "../../utils/buttons";
 import ImageView from "./defaultFR/imageView";
+import SimFaceCheck from "./simface/SimFaceCheck"
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -27,10 +28,14 @@ class ImageFR extends Component {
             preview: null,
             renderview: "default",
             filetext: "Upload Image ",
-            resultjson: "Output will be shown here"
+            resultjson: "Output will be shown here",
+            referenceImage:null,
+            compareImage:null,
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleState = this.handleState.bind(this);
+        this.handleSimiLarFace = this.handleSimiLarFace.bind(this);
+        this.renderSwitch = this.renderSwitch.bind(this);
     }
     handleState(event) {
         this.setState({
@@ -38,6 +43,13 @@ class ImageFR extends Component {
             preview: URL.createObjectURL(event.target.files[0]),
             filetext: null
         });
+    }
+    handleSimiLarFace(refImg,comImg)
+    {
+        this.setState({
+            referenceImage:refImg,
+            compareImage:comImg
+        })
     }
 
     handleSubmit(event) {
@@ -117,6 +129,8 @@ class ImageFR extends Component {
                                 >
                                     Similar Face
                                 </Button>
+                                <SimFaceCheck    onChangeValue={this.handleSimiLarFace}/>
+                                {console.log("bingbongbing",this.state.referenceImage)}
                             </din>
                         </div>
                     </Grid>
