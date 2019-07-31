@@ -31,12 +31,14 @@ class ImageFR extends Component {
             filetext: "Upload Image ",
             resultjson: "Output will be shown here",
             referenceImage: null,
-            compareImage: null
+            compareImage: null,
+            simFacePOST: false
         };
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleDefaultSubmit = this.handleDefaultSubmit.bind(this);
         this.handleState = this.handleState.bind(this);
         this.handleSimiLarFace = this.handleSimiLarFace.bind(this);
         this.renderSwitch = this.renderSwitch.bind(this);
+        this.handleSimFaceSubmit = this.handleSimFaceSubmit.bind(this);
     }
     handleState(event) {
         this.setState({
@@ -45,19 +47,41 @@ class ImageFR extends Component {
             filetext: null
         });
     }
-    handleSimiLarFace(refImg, comImg) {
-        this.setState({
-            referenceImage: refImg,
-            compareImage: comImg,
-            renderview: "simFaceView"
-        });
-    }
 
-    handleSubmit(event) {
+    handleDefaultSubmit(event) {
         event.preventDefault();
         let form_data = new FormData();
         form_data.append("file", this.state.file);
         let url = "http://localhost:8000/api/image/";
+        axios
+            .post(url, form_data, {
+                headers: {
+                    "content-type": "multipart/form-data"
+                }
+            })
+            .then(response => {
+                this.setState({
+                    resultjson: JSON.stringify(response.data, null, 2)
+                });
+            })
+            .catch(console.log);
+    }
+
+    handleSimiLarFace(refImg, comImg) {
+        this.setState({
+            referenceImage: refImg,
+            compareImage: comImg,
+            renderview: "simFaceView",
+            simFacePOST: true
+        });
+    }
+
+    handleSimFaceSubmit(event) {
+        event.preventDefault();
+        let form_data = new FormData();
+        form_data.append("file", this.state.referenceImage);
+        form_data.append("compareImage", this.state.compareImage);
+        let url = "http://localhost:8000/api/simface/";
         axios
             .post(url, form_data, {
                 headers: {
@@ -77,8 +101,10 @@ class ImageFR extends Component {
             case "simFaceView":
                 return (
                     <SimFaceView
-                        refImage={this.state.referenceImage}
-                        comImage={this.state.compareImage}
+                        refImage={URL.createObjectURL(
+                            this.state.referenceImage
+                        )}
+                        comImage={URL.createObjectURL(this.state.compareImage)}
                     />
                 );
             default:
@@ -99,7 +125,7 @@ class ImageFR extends Component {
                         {this.renderSwitch(this.state.renderview)}
 
                         <div style={{ textAlign: "center" }}>
-                            <form onSubmit={this.handleSubmit}>
+                            <form>
                                 <input
                                     accept="image/*"
                                     type="file"
@@ -116,7 +142,11 @@ class ImageFR extends Component {
                                     <Button
                                         variant="contained"
                                         color="primary"
-                                        onClick={this.handleSubmit}
+                                        onClick={
+                                            !this.state.simFacePOST
+                                                ? this.handleDefaultSubmit
+                                                : this.handleSimFaceSubmit
+                                        }
                                     >
                                         Process
                                     </Button>
@@ -124,20 +154,13 @@ class ImageFR extends Component {
                             </form>
 
                             <din>
-                                {/*
- <Button
-                                    variant="contained"
-                                    onClick={this.handleSimiLarFace}
-                                >
-                                    Similar Face
-                                </Button>
-                            */}
                                 <SimFaceForm
                                     onChangeValue={this.handleSimiLarFace}
                                 />
+
                                 {console.log(
                                     "bingbongbing",
-                                    this.state.referenceImage
+                                    this.state.simFacePOST
                                 )}
                             </din>
                         </div>

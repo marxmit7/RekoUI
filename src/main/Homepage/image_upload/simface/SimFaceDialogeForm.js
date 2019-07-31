@@ -19,14 +19,15 @@ export default function SimFaceForm(props) {
         setOpen(false);
     }
     function handleRefState(event) {
-        reffile = URL.createObjectURL(event.target.files[0]);
+        reffile =(event.target.files[0]);
     }
     function handleComState(event) {
-        comfile = URL.createObjectURL(event.target.files[0]);
+        comfile = (event.target.files[0]);
     }
     function handleCreate(event) {
 		event.preventDefault();
-		props.onChangeValue(reffile,comfile);
+        props.onChangeValue(reffile,comfile);
+        setOpen(false);
     }
     return (
         <div>
