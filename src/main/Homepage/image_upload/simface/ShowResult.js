@@ -19,8 +19,9 @@ function ViewFaceResult(props) {
             <Paper>
                 <div style={{ textAlign: "center" }}>
                     <img height="180" src={refImagefile} />
-                    <span>is similar with</span>
-                    <img height="180" src={comImagefile} />
+					<span>is similar with</span>
+					{props.responseResult[1]!=="None" ? <img height="180" src={comImagefile}/>:" None"}
+
                 </div>
             </Paper>
         </div>
