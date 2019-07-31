@@ -93,7 +93,8 @@ class ImageFR extends Component {
             .then(response => {
                 this.setState({
                     simlarFaceResult: response.data,
-                    resultjson: "Result"
+                    resultjson: "Result",
+                    simFacePOST:false
                 });
             })
             .catch(console.log);
