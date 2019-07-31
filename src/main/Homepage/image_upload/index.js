@@ -25,6 +25,7 @@ class ImageFR extends Component {
         this.state = {
             file: null,
             preview: null,
+            renderview: "default",
             filetext: "Upload Image ",
             resultjson: "Output will be shown here"
         };
@@ -58,15 +59,31 @@ class ImageFR extends Component {
             .catch(console.log);
     }
 
+    renderSwitch(param) {
+        switch (param) {
+            case "default":
+                return (
+                    <ImageView
+                        filetext={this.state.filetext}
+                        preview={this.state.preview}
+                    />
+                );
+            default:
+                return (
+                    <ImageView
+                        filetext={this.state.filetext}
+                        preview={this.state.preview}
+                    />
+                );
+        }
+    }
+
     render() {
         return (
             <div className={useStyles.root}>
                 <Grid container spacing={3}>
                     <Grid item xs={12} sm={6}>
-                        <ImageView
-                            filetext={this.state.filetext}
-                            preview={this.state.preview}
-                        />
+                        {this.renderSwitch(this.state.renderview)}
 
                         <div style={{ textAlign: "center" }}>
                             <form onSubmit={this.handleSubmit}>
