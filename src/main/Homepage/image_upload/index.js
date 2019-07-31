@@ -157,11 +157,6 @@ class ImageFR extends Component {
                                 <SimFaceForm
                                     onChangeValue={this.handleSimiLarFace}
                                 />
-
-                                {console.log(
-                                    "bingbongbing",
-                                    this.state.simFacePOST
-                                )}
                             </din>
                         </div>
                     </Grid>

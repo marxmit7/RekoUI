@@ -70,7 +70,7 @@ export default function SimFaceForm(props) {
                         </Button>
                         <label htmlFor="refimage">
                             <Button onClick={handleCreate} color="primary">
-                                process
+                                submit
                             </Button>
                         </label>
                     </DialogActions>
