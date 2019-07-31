@@ -7,7 +7,7 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 
-export default function SimFaceCheck(props) {
+export default function SimFaceForm(props) {
     const [open, setOpen] = React.useState(false);
     var reffile = null;
     var comfile = null;
@@ -19,10 +19,10 @@ export default function SimFaceCheck(props) {
         setOpen(false);
     }
     function handleRefState(event) {
-        reffile = event.target.files[0];
+        reffile = URL.createObjectURL(event.target.files[0]);
     }
     function handleComState(event) {
-        comfile = event.target.files[0];
+        comfile = URL.createObjectURL(event.target.files[0]);
     }
     function handleCreate(event) {
 		event.preventDefault();
@@ -31,7 +31,7 @@ export default function SimFaceCheck(props) {
     return (
         <div>
             <Button variant="contained" onClick={handleClickOpen}>
-                Open form dialog
+                Similar face
             </Button>
             <Dialog
                 open={open}

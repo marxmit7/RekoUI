@@ -1,6 +1,6 @@
 import React from "react";
 import Paper from "@material-ui/core/Paper";
-function ImageView(props) {
+function DefaultImageFRView(props) {
     return (
         <Paper>
             <div style={{ textAlign: "center" }}>
@@ -11,4 +11,4 @@ function ImageView(props) {
     );
 }
 
-export default ImageView;
+export default DefaultImageFRView;

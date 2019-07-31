@@ -6,8 +6,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import { UploadButton } from "../../utils/buttons";
-import ImageView from "./defaultFR/imageView";
-import SimFaceCheck from "./simface/SimFaceCheck"
+import DefaultImageFRView from "./defaultFR/imageView";
+import SimFaceForm from "./simface/SimFaceDialogeForm";
+import SimFaceView from "./simface/SimFaceView";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -26,11 +27,11 @@ class ImageFR extends Component {
         this.state = {
             file: null,
             preview: null,
-            renderview: "default",
+            renderView: "defaultView",
             filetext: "Upload Image ",
             resultjson: "Output will be shown here",
-            referenceImage:null,
-            compareImage:null,
+            referenceImage: null,
+            compareImage: null
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleState = this.handleState.bind(this);
@@ -44,12 +45,12 @@ class ImageFR extends Component {
             filetext: null
         });
     }
-    handleSimiLarFace(refImg,comImg)
-    {
+    handleSimiLarFace(refImg, comImg) {
         this.setState({
-            referenceImage:refImg,
-            compareImage:comImg
-        })
+            referenceImage: refImg,
+            compareImage: comImg,
+            renderview: "simFaceView"
+        });
     }
 
     handleSubmit(event) {
@@ -73,16 +74,16 @@ class ImageFR extends Component {
 
     renderSwitch(param) {
         switch (param) {
-            case "default":
+            case "simFaceView":
                 return (
-                    <ImageView
-                        filetext={this.state.filetext}
-                        preview={this.state.preview}
+                    <SimFaceView
+                        refImage={this.state.referenceImage}
+                        comImage={this.state.compareImage}
                     />
                 );
             default:
                 return (
-                    <ImageView
+                    <DefaultImageFRView
                         filetext={this.state.filetext}
                         preview={this.state.preview}
                     />
@@ -123,14 +124,21 @@ class ImageFR extends Component {
                             </form>
 
                             <din>
-                                <Button
+                                {/*
+ <Button
                                     variant="contained"
                                     onClick={this.handleSimiLarFace}
                                 >
                                     Similar Face
                                 </Button>
-                                <SimFaceCheck    onChangeValue={this.handleSimiLarFace}/>
-                                {console.log("bingbongbing",this.state.referenceImage)}
+                            */}
+                                <SimFaceForm
+                                    onChangeValue={this.handleSimiLarFace}
+                                />
+                                {console.log(
+                                    "bingbongbing",
+                                    this.state.referenceImage
+                                )}
                             </din>
                         </div>
                     </Grid>
