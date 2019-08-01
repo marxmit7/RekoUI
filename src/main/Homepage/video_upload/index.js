@@ -6,9 +6,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import { UploadButton, AddNewLink } from "../../utils/buttons";
-import YouTubePlayer from "./yt";
-import YTFormDialog from "./formYTlink";
-import VideoViewBox from "./uploadedVideoViewBox";
+import YouTubePlayer from "./YouTubeView/yt";
+import YTFormDialog from "./YouTubeView/formYTlink";
+import VideoViewBox from "./DefaultView/uploadedVideoViewBox";
 // https://blog.teamtreehouse.com/building-custom-controls-for-html5-videos
 class VideoFR extends Component {
     constructor(props) {
@@ -46,18 +46,23 @@ class VideoFR extends Component {
         this.setState({ YTlink: evalue });
         let form_data = new FormData();
         let url = "http://localhost:8000/api/ytstream/";
-        form_data.set('StreamLink',JSON.stringify(evalue));
-     axios.post(url, form_data, {
-             headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-          }}).then(response => {
+        form_data.set("StreamLink", JSON.stringify(evalue));
+        axios
+            .post(url, form_data, {
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded"
+                }
+            })
+            .then(response => {
                 this.setState({
                     fileid: response.data,
-                    resultjson: (JSON.stringify(response.data, null, 2)).replace(/\\/g, ""), // here json output need to be reformatted
+                    resultjson: JSON.stringify(response.data, null, 2).replace(
+                        /\\/g,
+                        ""
+                    ) // here json output need to be reformatted
                 });
             })
             .catch(console.log);
-
     }
 
     handleSubmit(event) {
