@@ -51,7 +51,12 @@ class ImageFR extends Component {
         this.setState({
             file: event.target.files[0],
             preview: URL.createObjectURL(event.target.files[0]),
-            filetext: null
+            filetext: null,
+            NSFWimgfile: null,
+            referenceImage:null,
+            compareImage:null,
+            renderView: "defaultView",
+            simlarFaceResult: null,
         });
     }
 
@@ -67,7 +72,10 @@ class ImageFR extends Component {
         this.setState({
             renderView: "nsfw",
             NSFWimgfile: imgfile,
-            filetext: null
+            filetext: null,
+            referenceImage:null,
+            compareImage:null,
+            simlarFaceResult: null,
         });
     }
 
@@ -223,7 +231,7 @@ class ImageFR extends Component {
                             <div>
                                 {" "}
                                 <pre>{this.state.resultjson}</pre>
-                                {this.state.simlarFaceResult !== null ? (
+                                {this.state.simlarFaceResult !== null  ? (
                                     <ViewFaceResult
                                         responseResult={
                                             this.state.simlarFaceResult
