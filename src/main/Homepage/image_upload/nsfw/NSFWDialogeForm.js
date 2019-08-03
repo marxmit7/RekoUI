@@ -18,13 +18,11 @@ export default function NSFWForm(props) {
         setOpen(false);
     }
     function handleRefState(event) {
-        imgfile =  event.target.files[0];
-
+        imgfile = event.target.files[0];
     }
 
     function handleCreate(event) {
         event.preventDefault();
-        console.log("form clickd");
         props.onChangeValue(imgfile);
         setOpen(false);
     }
@@ -38,14 +36,10 @@ export default function NSFWForm(props) {
                 onClose={handleClose}
                 aria-labelledby="form-dialog-title"
             >
-                <DialogTitle id="form-dialog-title">
-                    NSFW Detector
-                </DialogTitle>
-                <form >
+                <DialogTitle id="form-dialog-title">NSFW Detector</DialogTitle>
+                <form>
                     <DialogContent>
-                        <DialogContentText>
-                            upload the image
-                        </DialogContentText>
+                        <DialogContentText>upload the image</DialogContentText>
 
                         <input
                             accept="image/*"
@@ -54,7 +48,6 @@ export default function NSFWForm(props) {
                             id="refimage"
                             required
                         />
-
                     </DialogContent>
                     <DialogActions>
                         <Button onClick={handleClose} color="secondary">

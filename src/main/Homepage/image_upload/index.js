@@ -69,7 +69,6 @@ class ImageFR extends Component {
             NSFWimgfile: imgfile,
             filetext: null
         });
-        console.log("submitted", this.state.renderView);
     }
 
     renderSwitch(param) {
@@ -84,8 +83,6 @@ class ImageFR extends Component {
                     />
                 );
             case "nsfw":
-                console.log("bing");
-
                 return (
                     <div>
                         {" "}
@@ -93,9 +90,7 @@ class ImageFR extends Component {
                             NSFWprops={URL.createObjectURL(
                                 this.state.NSFWimgfile
                             )}
-                            nsfw={1}
                         />
-                        {this.handleNSFWSubmit()}
                     </div>
                 );
             default:
@@ -109,7 +104,7 @@ class ImageFR extends Component {
     }
 
     handleNSFWSubmit(event) {
-        // event.preventDefault();
+        event.preventDefault();
         let form_data = new FormData();
         form_data.append("file", this.state.NSFWimgfile);
         let url = "http://localhost:8000/api/nsfw/";
@@ -191,22 +186,33 @@ class ImageFR extends Component {
                                     <Button
                                         variant="contained"
                                         color="primary"
-                                        onClick={
-                                            !this.state.simFacePOST
-                                                ? this.handleDefaultSubmit
-                                                : this.handleSimFaceSubmit
-                                        }
+                                        onClick={(() => {
+                                            switch (this.state.renderView) {
+                                                case "defaultView":
+                                                    return this
+                                                        .handleDefaultSubmit;
+                                                case "nsfw":
+                                                    return this
+                                                        .handleNSFWSubmit;
+                                                case "simFaceView":
+                                                    return this
+                                                        .handleSimFaceSubmit;
+                                                default:
+                                                    return this
+                                                        .handleDefaultSubmit;
+                                            }
+                                        })()}
                                     >
                                         Process
                                     </Button>
                                 </div>
                             </form>
 
-                            <din>
+                            <div>
                                 <SimFaceForm
                                     onChangeValue={this.handleSimiLarFace}
                                 />
-                            </din>
+                            </div>
 
                             <br />
                             <NSFWForm onChangeValue={this.handleNSFW} />
