@@ -13,7 +13,7 @@ class EmbedNow extends Component {
         super(props);
 
         this.state = {
-            contents: [{ id: "", title: "", fileurl: "", created_on: "" }]
+            contents: [{ id: "", title: "", fileurl: null, created_on: "" }]
         };
     }
 

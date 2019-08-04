@@ -20,11 +20,11 @@ export default function ImgMediaCard(props) {
       <CardActionArea>
         <CardMedia
           component="img"
-          alt="Amazing Faces"
+          alt=""
           height="100"
           width="100"
           image= {fileurl}
-          title="Contemplative Reptile"
+          title=""
         />
 
       </CardActionArea>
