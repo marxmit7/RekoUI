@@ -139,16 +139,14 @@ function ResponsiveDrawer(props) {
                             return (
                                 <div>
                                     <ImageMethodTabs />
-                                    {console.log("tab is called", renderView)}
                                 </div>
-							);
-							case "Video":
-									return (
-										<div>
-											<VideoMethodTabs />
-											{console.log("tab is called", renderView)}
-										</div>
-									);
+                            );
+                        case "Video":
+                            return (
+                                <div>
+                                    <VideoMethodTabs />
+                                </div>
+                            );
                         default:
                             return console.log("default");
                     }
