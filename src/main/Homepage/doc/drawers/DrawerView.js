@@ -9,9 +9,9 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import Icon from "@material-ui/core/Icon";
-import Typography from "@material-ui/core/Typography";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import ImageMethodTabs from "../tabsView/imageMethod";
+import VideoMethodTabs from "../tabsView/videoMethod";
 
 const drawerWidth = 200;
 
@@ -52,34 +52,26 @@ function ResponsiveDrawer(props) {
     const classes = useStyles();
     const theme = useTheme();
     const [mobileOpen, setMobileOpen] = React.useState(false);
+    const [renderView, renderViewSet] = React.useState("image");
 
     function handleDrawerToggle() {
         setMobileOpen(!mobileOpen);
     }
-
-    function imageHandle(props) {
-        console.log("image is clicked");
+    function handleRenderToggle(props) {
+        renderViewSet(props);
     }
 
     function clickHandle(props) {
         switch (props) {
             case "image":
-                return (
-                    <div>
-						<ImageMethodTabs />
-						{console.log("Image is not clicked😎")}
-                    </div>
-                );
+                return <div>{handleRenderToggle(props)}</div>;
             case "Video":
-                return console.log("Video is not clicked😎");
+                return <div>{handleRenderToggle(props)}</div>;
             default:
                 return console.log("default");
         }
     }
 
-    function VideoHandle(props) {
-        console.log("video is clicked");
-    }
     const drawer = (
         <div>
             <div />
@@ -141,7 +133,26 @@ function ResponsiveDrawer(props) {
                 </Hidden>
             </nav>
             <main className={classes.content}>
-
+                {(() => {
+                    switch (renderView) {
+                        case "image":
+                            return (
+                                <div>
+                                    <ImageMethodTabs />
+                                    {console.log("tab is called", renderView)}
+                                </div>
+							);
+							case "Video":
+									return (
+										<div>
+											<VideoMethodTabs />
+											{console.log("tab is called", renderView)}
+										</div>
+									);
+                        default:
+                            return console.log("default");
+                    }
+                })()}
             </main>
         </div>
     );
