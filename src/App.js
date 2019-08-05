@@ -6,6 +6,9 @@ import EmbedNow from "./main/Homepage/embed/index";
 import VideoFR from "./main/Homepage/video_upload/index";
 import FeedBack from "./main/Homepage/feedback/index";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import APIsDOC from"./main/Homepage/doc/index";
+
+
 class App extends Component {
     render() {
         return (
@@ -19,6 +22,7 @@ class App extends Component {
                             <Route path="/embed" component={EmbedNow} exact />
                             <Route path="/video" component={VideoFR} exact />
                             <Route path="/feedback" component={FeedBack} exact />
+                            <Route path ="/doc" component ={APIsDOC} exact/>
                         </Switch>
                     </BrowserRouter>
 
