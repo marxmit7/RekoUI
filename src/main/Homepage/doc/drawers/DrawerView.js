@@ -12,6 +12,8 @@ import Icon from "@material-ui/core/Icon";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import ImageMethodTabs from "../tabsView/imageMethod";
 import VideoMethodTabs from "../tabsView/videoMethod";
+import FeedbackMethodTabs from "../tabsView/FeedbackMethod";
+import EmbedMethodTabs from "../tabsView/EmbedMethod";
 
 const drawerWidth = 200;
 
@@ -67,6 +69,10 @@ function ResponsiveDrawer(props) {
                 return <div>{handleRenderToggle(props)}</div>;
             case "Video":
                 return <div>{handleRenderToggle(props)}</div>;
+            case "Embed":
+                return <div>{handleRenderToggle(props)}</div>;
+            case "Feedback":
+                return <div>{handleRenderToggle(props)}</div>;
             default:
                 return console.log("default");
         }
@@ -80,7 +86,7 @@ function ResponsiveDrawer(props) {
 
             <Divider />
             <List>
-                {["image", "Video"].map((text, index) => (
+                {["image", "Video", "Embed", "Feedback"].map((text, index) => (
                     <ListItem
                         button
                         key={text}
@@ -145,6 +151,18 @@ function ResponsiveDrawer(props) {
                             return (
                                 <div>
                                     <VideoMethodTabs />
+                                </div>
+                            );
+                        case "Embed":
+                            return (
+                                <div>
+                                    <EmbedMethodTabs />
+                                </div>
+                            );
+                        case "Feedback":
+                            return (
+                                <div>
+                                    <FeedbackMethodTabs />
                                 </div>
                             );
                         default:

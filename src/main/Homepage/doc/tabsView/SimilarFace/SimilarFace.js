@@ -3,7 +3,7 @@ import { ReqRes, SnippetTab } from "./AllTabs";
 function SimilarFace() {
     return (
         <div>
-            Similar Face search
+            
             <ReqRes />
             <SnippetTab />
         </div>

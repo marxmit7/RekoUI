@@ -6,12 +6,14 @@ import SimilarFace from "./SimilarFace/SimilarFace";
 class ImageMethodTabs extends React.Component {
     render() {
         return (
-            <div>
+            <div>Face Recognition
                 <FaceReckognition />
-                <br />
+                <br /> <br /> <br /> <br />
+                NSFW
                 <NSFWAPIs />
-                <br/>
-                <SimilarFace/>
+                <br /> <br /> <br /> <br />
+                Similar Face Search
+                <SimilarFace />
             </div>
         );
     }

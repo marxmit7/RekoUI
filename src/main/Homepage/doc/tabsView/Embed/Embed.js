@@ -1,13 +1,12 @@
 import React from "react";
 import { ReqRes, SnippetTab } from "./AllTabs";
-function YouTubeProcessing() {
+function EmbedNow() {
     return (
         <div>
-
             <ReqRes />
             <SnippetTab />
         </div>
     );
 }
 
-export default YouTubeProcessing;
+export default EmbedNow;

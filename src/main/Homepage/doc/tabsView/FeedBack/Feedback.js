@@ -1,13 +1,13 @@
 import React from "react";
 import { ReqRes, SnippetTab } from "./AllTabs";
-function YouTubeProcessing() {
+function FeedbackNow() {
     return (
         <div>
-
+           
             <ReqRes />
             <SnippetTab />
         </div>
     );
 }
 
-export default YouTubeProcessing;
+export default FeedbackNow;
