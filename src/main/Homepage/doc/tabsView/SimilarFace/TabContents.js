@@ -118,7 +118,7 @@ function GETResponseContents() {
                     </tr>
                 </tbody>
             </Table>
-            <div>{ResExample}</div>
+            <div>Response Example <br/>{ResExample}</div>
         </div>
     );
 }
@@ -151,7 +151,7 @@ function POSTResponseContents() {
                     </tr>
                 </tbody>
             </Table>
-            <div>{ResExample}</div>
+            <div>Response Example <br/>{ResExample}</div>
         </div>
     );
 }
