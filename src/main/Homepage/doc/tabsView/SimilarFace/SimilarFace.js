@@ -1,13 +1,18 @@
 import React from "react";
-import { ReqRes, SnippetTab } from "./AllTabs";
+import { GETSnippetTab, GETReqRes, POSTReqRes,POSTSnippetTab} from "./AllTabs";
 function SimilarFace() {
     return (
         <div>
-        <b>GET</b>
-        <br />
-        /simiface
-            <ReqRes />
-            <SnippetTab />
+            <b>GET</b>
+            <br />
+            /simface
+            <GETReqRes />
+            <GETSnippetTab /> <br /> <br />
+            <b>POST</b>
+            <br />
+            /simface
+            <POSTReqRes />
+            <POSTSnippetTab />
         </div>
     );
 }

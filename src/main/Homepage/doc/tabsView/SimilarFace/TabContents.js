@@ -1,7 +1,7 @@
 import React from "react";
 import Table from "react-bootstrap/Table";
 
-function RequestContents() {
+function GETRequestContents() {
     return (
         <div>
             <Table striped bordered hover size="sm">
@@ -24,7 +24,37 @@ function RequestContents() {
     );
 }
 
-function ResponseContents() {
+function POSTRequestContents() {
+    return (
+        <div>
+            <Table striped bordered hover size="sm">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>file</td>
+                        <td>image file</td>
+                        <td>Reference face whose face is to be compared </td>
+                    </tr>
+                    <tr>
+                        <td>compareImage</td>
+                        <td>image file</td>
+                        <td>
+                            Image containing faces with which reference face is
+                            to be compared{" "}
+                        </td>
+                    </tr>
+                </tbody>
+            </Table>
+        </div>
+    );
+}
+function GETResponseContents() {
     const ResExample = JSON.stringify(
         {
             data: [
@@ -40,7 +70,7 @@ function ResponseContents() {
                     similarwith: "2",
                     created_on: "2019-07-30T11:34:10.798031Z"
                 }
-            ],
+            ]
         },
         null,
         2
@@ -92,15 +122,44 @@ function ResponseContents() {
         </div>
     );
 }
-function CurlContents() {
+function POSTResponseContents() {
+    const ResExample = JSON.stringify(
+        ["fuqlvwwht438iydup5i7ymfcuay9u5", 2],
+        null,
+        2
+    );
     return (
         <div>
-            curl things
-            <div />
+            <Table striped bordered hover size="sm">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>ID</td>
+                        <td>string</td>
+                        <td>ID of the POST Request</td>
+                    </tr>
+                    <tr>
+                        <td>Integer</td>
+                        <td>Integer</td>
+                        <td>ID of the face with which it is similar in compare Image</td>
+                    </tr>
+                </tbody>
+            </Table>
+            <div>{ResExample}</div>
         </div>
     );
 }
-function PythonContents() {
+function GETCurlContents() {
+    const value = "curl  http://127.0.0.1:8000/api/simface/ ";
+    return <div>{value}</div>;
+}
+function GETPythonContents() {
     return (
         <div>
             python things
@@ -108,7 +167,31 @@ function PythonContents() {
         </div>
     );
 }
-function NodeContents() {
+function GETNodeContents() {
+    return (
+        <div>
+            Node things
+            <div />
+        </div>
+    );
+}
+function POSTCurlContents() {
+    const value = "curl -i -X POST -H \"Content-Type: multipart/form-data\" -F \"file=@ <path to reference image>\" -F \"compareImage=@ <path to compare Image>\"  http://127.0.0.1:8000/api/simface/ "
+    return (
+        <div>
+            {value}
+        </div>
+    );
+}
+function POSTPythonContents() {
+    return (
+        <div>
+            python things
+            <div />
+        </div>
+    );
+}
+function POSTNodeContents() {
     return (
         <div>
             Node things
@@ -117,9 +200,14 @@ function NodeContents() {
     );
 }
 export {
-    RequestContents,
-    ResponseContents,
-    CurlContents,
-    PythonContents,
-    NodeContents
+    GETRequestContents,
+    POSTRequestContents,
+    POSTResponseContents,
+    GETResponseContents,
+    POSTCurlContents,
+    POSTPythonContents,
+    POSTNodeContents,
+    GETCurlContents,
+    GETPythonContents,
+    GETNodeContents
 };
