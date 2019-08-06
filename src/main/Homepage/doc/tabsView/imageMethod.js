@@ -7,13 +7,13 @@ class ImageMethodTabs extends React.Component {
     render() {
         return (
             <div>
-                Face Recognition
+                <h2>Face Recognition</h2>
                 <FaceReckognition />
                 <br /> <br /> <br /> <br />
-                Similar Face Search
+                <h2>Similar Face Search</h2>
                 <SimilarFace />
                 <br /> <br /> <br /> <br />
-                NSFW Classifier
+                <h2> NSFW Classifier</h2>
                 <NSFWAPIs />
             </div>
         );
