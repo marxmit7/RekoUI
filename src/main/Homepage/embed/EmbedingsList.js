@@ -7,7 +7,7 @@ export default class EmbedService  {
     constructor(){}
 
     getEmbeddingsList() {
-        const url = `${API_URL}/api/faceid/`;
+        const url = `${API_URL}/api/embed/`;
         return axios.get(url).then(response => response.data);
     }
 }

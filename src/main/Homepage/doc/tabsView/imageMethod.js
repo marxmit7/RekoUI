@@ -9,7 +9,7 @@ class ImageMethodTabs extends React.Component {
             <div>Face Recognition
                 <FaceReckognition />
                 <br /> <br /> <br /> <br />
-                NSFW
+                NSFW Classifier
                 <NSFWAPIs />
                 <br /> <br /> <br /> <br />
                 Similar Face Search
