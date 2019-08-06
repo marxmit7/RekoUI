@@ -48,7 +48,7 @@ function ResponseContents() {
                 <tbody>
                     <tr>
                         <td>classes</td>
-                        <td>Dictionary</td>
+                        <td>String</td>
                         <td>class having the maximum probability</td>
                     </tr>
                     <tr>
