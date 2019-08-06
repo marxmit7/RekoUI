@@ -27,7 +27,7 @@ export default function EmbdeFormDialog() {
         event.preventDefault();
         let form_data = new FormData();
         form_data.append('file',file);
-        let url = "http://localhost:8000/api/embednow/";
+        let url = "http://localhost:8000/api/embed/";
         axios
             .post(url, form_data, {
                 headers: {
