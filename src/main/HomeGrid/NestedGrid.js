@@ -24,13 +24,8 @@ export default function NestedGrid() {
         { id: "Image", name: "image_fr" },
         { id: "Video", name: "video_fr" },
         { id: "FeedBack", name: "feedback_fr" },
-        // { id: "APIs", name: "apis_fr" },
-        { id: "Documentation", name: "documentation_fr" }
+        { id: "doc", name: "APIs" }
     ];
-
-    // function clickHandler() {
-    //     console.log("aasdfasdf");
-    // }
 
     function FormRow() {
         return (

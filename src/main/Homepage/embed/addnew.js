@@ -8,7 +8,7 @@ export default class EmbedService {
     constructor() {}
 
     addNewEmbedding() {
-        const url = `${API_URL}/api/embednow/`;
+        const url = `${API_URL}/api/embed/`;
         let form_data = new FormData();
         form_data.append("file", this.state.file);
         return axios
