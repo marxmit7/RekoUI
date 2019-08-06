@@ -118,7 +118,10 @@ function GETResponseContents() {
                     </tr>
                 </tbody>
             </Table>
-            <div>Response Example <br/>{ResExample}</div>
+            <div>
+                Response Example <br />
+                {ResExample}
+            </div>
         </div>
     );
 }
@@ -147,11 +150,17 @@ function POSTResponseContents() {
                     <tr>
                         <td>Integer</td>
                         <td>Integer</td>
-                        <td>ID of the face with which it is similar in compare Image</td>
+                        <td>
+                            ID of the face with which it is similar in compare
+                            Image
+                        </td>
                     </tr>
                 </tbody>
             </Table>
-            <div>Response Example <br/>{ResExample}</div>
+            <div>
+                Response Example <br />
+                {ResExample}
+            </div>
         </div>
     );
 }
@@ -160,14 +169,13 @@ function GETCurlContents() {
     return <div>{value}</div>;
 }
 function GETPythonContents() {
-    const value = "import requests \nurl =  \"http://127.0.0.1:8000/api/simface/\" \nresponse = requests.get(url)\nprint(response.text)"
+    const value =
+        'import requests \nurl =  "http://127.0.0.1:8000/api/simface/" \nresponse = requests.get(url)\nprint(response.text)';
     return (
         <div>
-        <pre>
-           <code>
-                {value}
-           </code>
-           </pre>
+            <pre>
+                <code>{value}</code>
+            </pre>
         </div>
     );
 }
@@ -180,22 +188,18 @@ function GETNodeContents() {
     );
 }
 function POSTCurlContents() {
-    const value = "curl -i -X POST -H \"Content-Type: multipart/form-data\" -F \"file=@ <path to reference image>\" -F \"compareImage=@ <path to compare Image>\"  http://127.0.0.1:8000/api/simface/ "
-    return (
-        <div>
-            {value}
-        </div>
-    );
+    const value =
+        'curl -i -X POST -H "Content-Type: multipart/form-data" -F "file=@ <path to reference image>" -F "compareImage=@ <path to compare Image>"  http://127.0.0.1:8000/api/simface/ ';
+    return <div>{value}</div>;
 }
 function POSTPythonContents() {
-    const value = "import requests \nreferenceImagePath = <path to reference image file> \ncompareImagePath = <path to compare image file> \nurl =  \"http://127.0.0.1:8000/api/simface/\" \nfiles = {'file': open(referenceImagePath, 'rb'),'compareImage':open(compareImagePath,'rb')}\nresponse = requests.post(url, files=files)\nprint(response.text)"
+    const value =
+        "import requests \nreferenceImagePath = <path to reference image file> \ncompareImagePath = <path to compare image file> \nurl =  \"http://127.0.0.1:8000/api/simface/\" \nfiles = {'file': open(referenceImagePath, 'rb'),'compareImage':open(compareImagePath,'rb')}\nresponse = requests.post(url, files=files)\nprint(response.text)";
     return (
         <div>
-        <pre>
-           <code>
-                {value}
-           </code>
-           </pre>
+            <pre>
+                <code>{value}</code>
+            </pre>
         </div>
     );
 }
