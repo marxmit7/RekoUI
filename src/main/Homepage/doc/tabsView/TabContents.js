@@ -34,7 +34,7 @@ function POSTResponseContents(props) {
         {props.value}
             <div>
                 Response Example <br />
-                {props.ResExample}
+                <pre> {(props.ResExample)}</pre>
             </div>
         </div>
     );

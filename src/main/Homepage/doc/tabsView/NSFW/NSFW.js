@@ -1,12 +1,12 @@
 import React from "react";
-import { GETReqRes, GETSnippetTab } from "../AllTabs";
+import { POSTReqRes, POSTSnippetTab } from "../AllTabs";
 import {
-    GETResExample,
-    GETReqTable,
-    GETnodeValue,
-    GETpythonValue,
-    GETResTable,
-    GETcurlValue
+    POSTResExample,
+    POSTReqTable,
+    POSTnodeValue,
+    POSTpythonValue,
+    POSTResTable,
+    POSTcurlValue
 } from "./AllReqValues";
 function NSFWAPIs() {
     return (
@@ -14,15 +14,15 @@ function NSFWAPIs() {
         <b>POST</b>
         <br />
         /nsfw
-        <GETReqRes
-        ReqVal={GETReqTable()}
-        ResVal={GETResTable()}
-        ResExample={GETResExample}
+        <POSTReqRes
+        ReqVal={POSTReqTable()}
+        ResVal={POSTResTable()}
+        ResExample={POSTResExample}
     />
-    <GETSnippetTab
-        curlValue={GETcurlValue}
-        pythonValue={GETpythonValue}
-        nodeValue={GETnodeValue}
+    <POSTSnippetTab
+        curlValue={POSTcurlValue}
+        pythonValue={POSTpythonValue}
+        nodeValue={POSTnodeValue}
     />
         </div>
     );
