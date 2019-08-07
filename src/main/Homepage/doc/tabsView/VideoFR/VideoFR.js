@@ -1,10 +1,29 @@
 import React from "react";
-import { ReqRes, SnippetTab } from "./AllTabs";
+import { POSTReqRes, POSTSnippetTab } from "../AllTabs";
+import {
+    POSTResExample,
+    POSTReqTable,
+    POSTnodeValue,
+    POSTpythonValue,
+    POSTResTable,
+    POSTcurlValue
+} from "./AllReqValues";
 function VideoFR() {
     return (
         <div>
-            <ReqRes />
-            <SnippetTab />
+        <b>POST</b>
+        <br />
+        /nsfw
+        <POSTReqRes
+        ReqVal={POSTReqTable()}
+        ResVal={POSTResTable()}
+        ResExample={POSTResExample}
+    />
+    <POSTSnippetTab
+        curlValue={POSTcurlValue}
+        pythonValue={POSTpythonValue}
+        nodeValue={POSTnodeValue}
+    />
         </div>
     );
 }
