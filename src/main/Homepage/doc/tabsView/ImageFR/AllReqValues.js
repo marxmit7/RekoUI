@@ -1,7 +1,7 @@
 import React from "react";
 import Table from "react-bootstrap/Table";
 
-function GETRequestContents() {
+function GETReqTable() {
     return (
         <div>
             <Table striped bordered hover size="sm">
@@ -24,7 +24,7 @@ function GETRequestContents() {
     );
 }
 
-function POSTRequestContents() {
+function POSTReqTable() {
     return (
         <div>
             <Table striped bordered hover size="sm">
@@ -54,27 +54,8 @@ function POSTRequestContents() {
         </div>
     );
 }
-function GETResponseContents() {
-    const ResExample = JSON.stringify(
-        {
-            data: [
-                {
-                    id: "og820jy6ptueust0w4qpis6swwdy5k",
-                    title: "og820jy6ptueust0w4qpis6swwdy5k",
-                    similarwith: "2",
-                    created_on: "2019-07-30T11:28:18.912067Z"
-                },
-                {
-                    id: "rwcx7frpytti65pujm9k6exnfmystq",
-                    title: "rwcx7frpytti65pujm9k6exnfmystq",
-                    similarwith: "2",
-                    created_on: "2019-07-30T11:34:10.798031Z"
-                }
-            ]
-        },
-        null,
-        2
-    );
+
+function GETResTable() {
     return (
         <div>
             <Table striped bordered hover size="sm">
@@ -118,19 +99,11 @@ function GETResponseContents() {
                     </tr>
                 </tbody>
             </Table>
-            <div>
-                Response Example <br />
-                {ResExample}
-            </div>
         </div>
     );
 }
-function POSTResponseContents() {
-    const ResExample = JSON.stringify(
-        ["fuqlvwwht438iydup5i7ymfcuay9u5", 2],
-        null,
-        2
-    );
+
+function POSTResTable() {
     return (
         <div>
             <Table striped bordered hover size="sm">
@@ -157,69 +130,54 @@ function POSTResponseContents() {
                     </tr>
                 </tbody>
             </Table>
-            <div>
-                Response Example <br />
-                {ResExample}
-            </div>
         </div>
     );
 }
-function GETCurlContents() {
-    const value = "curl  http://127.0.0.1:8000/api/simface/ ";
-    return <div>{value}</div>;
-}
-function GETPythonContents() {
-    const value =
-        'import requests \nurl =  "http://127.0.0.1:8000/api/simface/" \nresponse = requests.get(url)\nprint(response.text)';
-    return (
-        <div>
-            <pre>
-                <code>{value}</code>
-            </pre>
-        </div>
-    );
-}
-function GETNodeContents() {
-    return (
-        <div>
-            Node things
-            <div />
-        </div>
-    );
-}
-function POSTCurlContents() {
-    const value =
-        'curl -i -X POST -H "Content-Type: multipart/form-data" -F "file=@ <path to reference image>" -F "compareImage=@ <path to compare Image>"  http://127.0.0.1:8000/api/simface/ ';
-    return <div>{value}</div>;
-}
-function POSTPythonContents() {
-    const value =
-        "import requests \nreferenceImagePath = <path to reference image file> \ncompareImagePath = <path to compare image file> \nurl =  \"http://127.0.0.1:8000/api/simface/\" \nfiles = {'file': open(referenceImagePath, 'rb'),'compareImage':open(compareImagePath,'rb')}\nresponse = requests.post(url, files=files)\nprint(response.text)";
-    return (
-        <div>
-            <pre>
-                <code>{value}</code>
-            </pre>
-        </div>
-    );
-}
-function POSTNodeContents() {
-    return (
-        <div>
-            Node things
-            <div />
-        </div>
-    );
-}
+const GETResExample = JSON.stringify(
+    {
+        data: [
+            {
+                id: "og820jy6ptueust0w4qpis6swwdy5k",
+                title: "og820jy6ptueust0w4qpis6swwdy5k",
+                similarwith: "2",
+                created_on: "2019-07-30T11:28:18.912067Z"
+            },
+            {
+                id: "rwcx7frpytti65pujm9k6exnfmystq",
+                title: "rwcx7frpytti65pujm9k6exnfmystq",
+                similarwith: "2",
+                created_on: "2019-07-30T11:34:10.798031Z"
+            }
+        ]
+    },
+    null,
+    2
+);
+
+const POSTResExample = JSON.stringify(
+    ["fuqlvwwht438iydup5i7ymfcuay9u5", 2],
+    null,
+    2
+);
+const GETcurlValue = "curl  http://127.0.0.1:8000/api/simface/ ";
+const POSTcurlValue = 'curl -i -X POST -H "Content-Type: multipart/form-data" -F "file=@ <path to reference image>" -F "compareImage=@ <path to compare Image>"  http://127.0.0.1:8000/api/simface/ ';
+const GETpythonValue =
+    'import requests \nurl =  "http://127.0.0.1:8000/api/simface/" \nresponse = requests.get(url)\nprint(response.text)';
+const POSTpythonValue = "import requests \nreferenceImagePath = <path to reference image file> \ncompareImagePath = <path to compare image file> \nurl =  \"http://127.0.0.1:8000/api/simface/\" \nfiles = {'file': open(referenceImagePath, 'rb'),'compareImage':open(compareImagePath,'rb')}\nresponse = requests.post(url, files=files)\nprint(response.text)";
+const GETnodeValue = "";
+const POSTnodeValue ="";
+
 export {
-    GETRequestContents,
-    POSTRequestContents,
-    POSTResponseContents,
-    GETResponseContents,
-    POSTCurlContents,
-    POSTPythonContents,
-    POSTNodeContents,
-    GETCurlContents,
-    GETPythonContents,
-    GETNodeContents
+    GETResExample,
+    GETReqTable,
+    GETnodeValue,
+    GETpythonValue,
+    GETResTable,
+    GETcurlValue,
+    POSTResExample,
+    POSTpythonValue,
+    POSTcurlValue,
+    POSTReqTable,
+    POSTResTable,
+    POSTnodeValue
 };

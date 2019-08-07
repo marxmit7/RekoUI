@@ -1,7 +1,7 @@
 import React from "react";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
-import{
+import {
     GETRequestContents,
     POSTRequestContents,
     POSTResponseContents,
@@ -30,13 +30,13 @@ class GETSnippetTab extends React.Component {
         return (
             <Tabs activeKey={this.state.activeTab} onSelect={this.handleSelect}>
                 <Tab eventKey={1} title="Curl">
-                    <GETCurlContents/>
+                    <GETCurlContents value = {this.props.curlValue} />
                 </Tab>
                 <Tab eventKey={2} title="Python">
-                    <GETPythonContents/>
+                    <GETPythonContents value = {this.props.pythonValue}/>
                 </Tab>
                 <Tab eventKey={3} title="Node" disabled>
-                    <GETNodeContents/>
+                    <GETNodeContents value = {this.props.nodeValue}/>
                 </Tab>
             </Tabs>
         );
@@ -67,10 +67,10 @@ class GETReqRes extends React.Component {
         return (
             <Tabs activeKey={this.state.activeTab} onSelect={this.handleSelect}>
                 <Tab eventKey={1} title="Request">
-                    <GETRequestContents />
+                    <GETRequestContents value={this.props.ReqVal} />
                 </Tab>
                 <Tab eventKey={2} title="Response">
-                    <GETResponseContents />
+                    <GETResponseContents value={this.props.ResVal} ResExample = {this.props.ResExample}/>
                 </Tab>
             </Tabs>
         );
@@ -83,7 +83,8 @@ class GETReqRes extends React.Component {
             activeTab: selectedTab
         });
     }
-}class POSTSnippetTab extends React.Component {
+}
+class POSTSnippetTab extends React.Component {
     constructor(props) {
         super();
         this.state = {
@@ -99,13 +100,13 @@ class GETReqRes extends React.Component {
         return (
             <Tabs activeKey={this.state.activeTab} onSelect={this.handleSelect}>
                 <Tab eventKey={1} title="Curl">
-                    <POSTCurlContents/>
+                    <POSTCurlContents value = {this.props.curlValue}/>
                 </Tab>
                 <Tab eventKey={2} title="Python">
-                    <POSTPythonContents/>
+                    <POSTPythonContents value = {this.props.pythonValue}/>
                 </Tab>
                 <Tab eventKey={3} title="Node" disabled>
-                    <POSTNodeContents/>
+                    <POSTNodeContents value = {this.props.pythonValue}/>
                 </Tab>
             </Tabs>
         );
@@ -136,10 +137,10 @@ class POSTReqRes extends React.Component {
         return (
             <Tabs activeKey={this.state.activeTab} onSelect={this.handleSelect}>
                 <Tab eventKey={1} title="Request">
-                    <POSTRequestContents />
+                    <POSTRequestContents value = {this.props.ReqVal}/>
                 </Tab>
                 <Tab eventKey={2} title="Response">
-                    <POSTResponseContents />
+                    <POSTResponseContents value = {this.props.ResVal} ResExample = {this.props.ResExample}/>
                 </Tab>
             </Tabs>
         );
@@ -153,4 +154,4 @@ class POSTReqRes extends React.Component {
         });
     }
 }
-export { GETSnippetTab, GETReqRes, POSTReqRes,POSTSnippetTab};
+export { GETSnippetTab, GETReqRes, POSTReqRes, POSTSnippetTab };
