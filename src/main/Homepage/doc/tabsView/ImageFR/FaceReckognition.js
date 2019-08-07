@@ -1,13 +1,30 @@
 import React from "react";
-import { ReqRes, SnippetTab } from "./AllTabs";
+import { GETReqRes, GETSnippetTab } from "../AllTabs";
+import {
+    GETResExample,
+    GETReqTable,
+    GETnodeValue,
+    GETpythonValue,
+    GETResTable,
+    GETcurlValue
+} from "./AllReqValues";
+
 function YouTubeProcessing() {
     return (
         <div>
             <b>POST</b>
             <br />
             /image
-            <ReqRes />
-            <SnippetTab />
+            <GETReqRes
+                ReqVal={GETReqTable()}
+                ResVal={GETResTable()}
+                ResExample={GETResExample}
+            />
+            <GETSnippetTab
+                curlValue={GETcurlValue}
+                pythonValue={GETpythonValue}
+                nodeValue={GETnodeValue}
+            />
         </div>
     );
 }

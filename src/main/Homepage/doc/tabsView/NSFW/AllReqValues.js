@@ -1,7 +1,7 @@
 import React from "react";
 import Table from "react-bootstrap/Table";
 
-function RequestContents() {
+function GETReqTable() {
     return (
         <div>
             <Table striped bordered hover size="sm">
@@ -24,17 +24,7 @@ function RequestContents() {
     );
 }
 
-function ResponseContents() {
-    const ResExample = JSON.stringify({
-        "classes": "Porn",
-        "probabilities": {
-            "Drawings": 0.00549643068,
-            "Hentai": 0.0385140628,
-            "Neutral": 0.408659965,
-            "Porn": 0.543233097,
-            "Sexy": 0.00409639906
-        }
-    },null,2);
+function GETResTable() {
     return (
         <div>
             <Table striped bordered hover size="sm">
@@ -56,52 +46,38 @@ function ResponseContents() {
                         <td>Dictionary</td>
                         <td>contains classes and corresponding probability</td>
                     </tr>
-
-
                 </tbody>
             </Table>
+        </div>
+    );
+}
 
-            <div>
-                Response Example
-                <pre>{ResExample}</pre>
-            </div>
-        </div>
-    );
-}
-function CurlContents() {
-    const value =
-        'curl -i -X POST -H "Content-Type: multipart/form-data " -F "file=@<path to image file> " http://127.0.0.1:8000/api/nsfw/';
-    return (
-        <div>
-            <pre> {value} </pre>
-        </div>
-    );
-}
-function PythonContents() {
-    const value = "import requests \nimagePath = <path to image file> \nurl =  \"http://127.0.0.1:8000/api/nsfw/\" \nfiles = {'file\': open(imagePath, \'rb\') }\nresponse = requests.post(url, files=files)\nprint(response.text)"
+const GETResExample = JSON.stringify(
+    {
+        classes: "Porn",
+        probabilities: {
+            Drawings: 0.00549643068,
+            Hentai: 0.0385140628,
+            Neutral: 0.408659965,
+            Porn: 0.543233097,
+            Sexy: 0.00409639906
+        }
+    },
+    null,
+    2
+);
 
-    return (
-        <div>
-        <pre>
-           <code>
-                {value}
-           </code>
-           </pre>
-        </div>
-    );
-}
-function NodeContents() {
-    return (
-        <div>
-            Node things
-            <div />
-        </div>
-    );
-}
+const GETcurlValue =
+    'curl -i -X POST -H "Content-Type: multipart/form-data " -F "file=@<path to image file> " http://127.0.0.1:8000/api/nsfw/';
+const GETpythonValue =
+    "import requests \nimagePath = <path to image file> \nurl =  \"http://127.0.0.1:8000/api/nsfw/\" \nfiles = {'file': open(imagePath, 'rb') }\nresponse = requests.post(url, files=files)\nprint(response.text)";
+const GETnodeValue = "";
+
 export {
-    RequestContents,
-    ResponseContents,
-    CurlContents,
-    PythonContents,
-    NodeContents
+    GETResExample,
+    GETReqTable,
+    GETnodeValue,
+    GETpythonValue,
+    GETResTable,
+    GETcurlValue
 };

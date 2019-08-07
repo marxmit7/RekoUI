@@ -1,13 +1,29 @@
 import React from "react";
-import { ReqRes, SnippetTab } from "./AllTabs";
+import { GETReqRes, GETSnippetTab } from "../AllTabs";
+import {
+    GETResExample,
+    GETReqTable,
+    GETnodeValue,
+    GETpythonValue,
+    GETResTable,
+    GETcurlValue
+} from "./AllReqValues";
 function NSFWAPIs() {
     return (
         <div>
         <b>POST</b>
         <br />
         /nsfw
-            <ReqRes />
-            <SnippetTab />
+        <GETReqRes
+        ReqVal={GETReqTable()}
+        ResVal={GETResTable()}
+        ResExample={GETResExample}
+    />
+    <GETSnippetTab
+        curlValue={GETcurlValue}
+        pythonValue={GETpythonValue}
+        nodeValue={GETnodeValue}
+    />
         </div>
     );
 }
