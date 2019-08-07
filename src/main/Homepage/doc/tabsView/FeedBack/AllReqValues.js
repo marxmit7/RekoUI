@@ -37,18 +37,30 @@ function POSTReqTable() {
                 </thead>
                 <tbody>
                     <tr>
-                        <td>file</td>
-                        <td>image file</td>
-                        <td>Reference face whose face is to be compared </td>
+                        <td>id</td>
+                        <td>Integer</td>
+                        <td>id of the object saved in the database </td>
                     </tr>
                     <tr>
-                        <td>compareImage</td>
-                        <td>image file</td>
-                        <td>
-                            Image containing faces with which reference face is
-                            to be compared{" "}
-                        </td>
+                        <td>suggestedName</td>
+                        <td>string</td>
+                        <td>Name suggested by user </td>
                     </tr>
+                    <tr>
+                        <td>upvote</td>
+                        <td>integer</td>
+                        <td>upvote = previous upvote of the id + 1</td>
+                    </tr>
+                    <tr>
+                        <td>downvote</td>
+                        <td>upvote</td>
+                        <td>downvote = previous downvote of the id + 1</td>
+                    </tr>
+                    <tr>
+                    <td>feedback_id</td>
+                    <td>String</td>
+                    <td>Object id of the embed model (Django) saved in database whose newname is to be suggested or upvote/downvote</td>
+                </tr>
                 </tbody>
             </Table>
         </div>
@@ -69,10 +81,10 @@ function GETResTable() {
                 <tbody>
                     <tr>
                         <td>data</td>
-                        <td>Array</td>
+                        <td>Array containing only 1 element</td>
                         <td>
-                            Contains the detail of the particular POST request
-                            result
+                            Contains the detail of the particular suggestedName
+                            of the embedding
                         </td>
                     </tr>
                     <tr>
@@ -81,21 +93,36 @@ function GETResTable() {
                         <td>ID of the request</td>
                     </tr>
                     <tr>
-                        <td>title</td>
+                        <td>suggestedName</td>
                         <td>string</td>
-                        <td>title of the reference image file</td>
+                        <td>Name suggested by user</td>
                     </tr>
                     <tr>
-                        <td>similarwith</td>
-                        <td>integer</td>
+                        <td>upvote</td>
+                        <td>Integer</td>
+                        <td>No. of upvotes by user</td>
+                    </tr>
+                    <tr>
+                        <td>downvote</td>
+                        <td>Integer</td>
+                        <td>No. of downvotes by user</td>
+                    </tr>
+
+                    <tr>
+                        <td>feedback</td>
+                        <td>string</td>
                         <td>
-                            face id with which it is similar in compare image
+                            object id of the object saved in embed model of
+                            Django
                         </td>
                     </tr>
                     <tr>
-                        <td>created_on</td>
-                        <td>Date</td>
-                        <td>When the POST Request was made</td>
+                        <td>url</td>
+                        <td>string</td>
+                        <td>
+                            url of the image file containing the face of the
+                            respective faceid
+                        </td>
                     </tr>
                 </tbody>
             </Table>
@@ -137,18 +164,14 @@ const GETResExample = JSON.stringify(
     {
         data: [
             {
-                id: "og820jy6ptueust0w4qpis6swwdy5k",
-                title: "og820jy6ptueust0w4qpis6swwdy5k",
-                similarwith: "2",
-                created_on: "2019-07-30T11:28:18.912067Z"
-            },
-            {
-                id: "rwcx7frpytti65pujm9k6exnfmystq",
-                title: "rwcx7frpytti65pujm9k6exnfmystq",
-                similarwith: "2",
-                created_on: "2019-07-30T11:34:10.798031Z"
+                id: 75,
+                suggestedName: "Barrack Obama",
+                upvote: 7,
+                downvote: 0,
+                feedback: "a6783a3e-8ad5-4cd2-aff3-e1f4b4e55717"
             }
-        ]
+        ],
+        fileurl: "/media/face/a6783a3e8ad54cd2aff3e1f4b4e55717.jpg"
     },
     null,
     2
@@ -159,13 +182,13 @@ const POSTResExample = JSON.stringify(
     null,
     2
 );
-const GETcurlValue = "curl  http://127.0.0.1:8000/api/simface/ ";
-const POSTcurlValue = 'curl -i -X POST -H "Content-Type: multipart/form-data" -F "file=@ <path to reference image>" -F "compareImage=@ <path to compare Image>"  http://127.0.0.1:8000/api/simface/ ';
+const GETcurlValue = "curl  http://127.0.0.1:8000/api/feedback/ ";
+const POSTcurlValue ="";
 const GETpythonValue =
-    'import requests \nurl =  "http://127.0.0.1:8000/api/simface/" \nresponse = requests.get(url)\nprint(response.text)';
-const POSTpythonValue = "import requests \nreferenceImagePath = <path to reference image file> \ncompareImagePath = <path to compare image file> \nurl =  \"http://127.0.0.1:8000/api/simface/\" \nfiles = {'file': open(referenceImagePath, 'rb'),'compareImage':open(compareImagePath,'rb')}\nresponse = requests.post(url, files=files)\nprint(response.text)";
+    'import requests \nurl =  "http://127.0.0.1:8000/api/feedback/" \nresponse = requests.get(url)\nprint(response.text)';
+const POSTpythonValue =""
 const GETnodeValue = "";
-const POSTnodeValue ="";
+const POSTnodeValue = "";
 
 export {
     GETResExample,
