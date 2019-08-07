@@ -1,7 +1,7 @@
 import React from "react";
 import Table from "react-bootstrap/Table";
 
-function GETReqTable() {
+function POSTReqTable() {
     return (
         <div>
             <Table striped bordered hover size="sm">
@@ -24,7 +24,7 @@ function GETReqTable() {
     );
 }
 
-function GETResTable() {
+function POSTResTable() {
     return (
         <div>
             <Table striped bordered hover size="sm">
@@ -52,7 +52,7 @@ function GETResTable() {
     );
 }
 
-const GETResExample = JSON.stringify(
+const POSTResExample = JSON.stringify(
     {
         classes: "Porn",
         probabilities: {
@@ -67,17 +67,17 @@ const GETResExample = JSON.stringify(
     2
 );
 
-const GETcurlValue =
+const POSTcurlValue =
     'curl -i -X POST -H "Content-Type: multipart/form-data " -F "file=@<path to image file> " http://127.0.0.1:8000/api/nsfw/';
-const GETpythonValue =
+const POSTpythonValue =
     "import requests \nimagePath = <path to image file> \nurl =  \"http://127.0.0.1:8000/api/nsfw/\" \nfiles = {'file': open(imagePath, 'rb') }\nresponse = requests.post(url, files=files)\nprint(response.text)";
-const GETnodeValue = "";
+const POSTnodeValue = "";
 
 export {
-    GETResExample,
-    GETReqTable,
-    GETnodeValue,
-    GETpythonValue,
-    GETResTable,
-    GETcurlValue
+    POSTResExample,
+    POSTReqTable,
+    POSTnodeValue,
+    POSTpythonValue,
+    POSTResTable,
+    POSTcurlValue
 };
