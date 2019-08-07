@@ -144,7 +144,7 @@ const POSTResExample = JSON.stringify(
     2
 );
 const GETcurlValue = "curl  http://127.0.0.1:8000/api/embed/ ";
-const POSTcurlValue = 'curl -i -X POST -H "Content-Type: multipart/form-data" -F "file=@ <path to reference image (filename should the be the name of the person)>" -F "compareImage=@ <path to compare Image>"  http://127.0.0.1:8000/api/embed/ ';
+const POSTcurlValue = 'curl -i -X POST -H "Content-Type: multipart/form-data" -F "file=@ <path to image file (filename should be the faceid)> "  http://127.0.0.1:8000/api/embed/ ';
 const GETpythonValue =
     'import requests \nurl =  "http://127.0.0.1:8000/api/simface/" \nresponse = requests.get(url)\nprint(response.text)';
 const POSTpythonValue = "import requests \nImagePath = <path to image file> \nurl =  \"http://127.0.0.1:8000/api/embed/\" \nfiles = {'file': open(ImagePath, 'rb')}\nresponse = requests.post(url, files=files)\nprint(response.text)";
