@@ -7,14 +7,15 @@ class VideoMethodTabs extends React.Component {
         return (
             <div>
                 <Paper>
-                    <br /> Video Porcessing
+                    <br />
+                   <h2>Video Porcessing</h2>
                     <VideoFR />
                     <br />{" "}
                 </Paper>
                 <br />
                 <Paper>
                     <br />
-                    YouTube Video Processing
+                   <h2>Steamg Video Processing</h2>
                     <YouTubeProcessing />
                 </Paper>
             </div>
