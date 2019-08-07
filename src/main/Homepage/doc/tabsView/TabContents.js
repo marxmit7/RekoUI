@@ -22,7 +22,7 @@ function GETResponseContents(props) {
         {props.value}
             <div>
                 Response Example <br />
-                {props.ResExample}
+              <pre> {(props.ResExample)}</pre>
             </div>
         </div>
     );
