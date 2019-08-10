@@ -7,13 +7,19 @@ import VideoFR from "./main/Homepage/video_upload/index";
 import FeedBack from "./main/Homepage/feedback/index";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import APIsDOC from"./main/Homepage/doc/index";
+import {connect} from "react-redux";
+import * as actions from "./store/actions/auth";
 
 
 class App extends Component {
+    componentDidMount()
+    {
+        this.props.onTryAutoSignup();
+    }
     render() {
         return (
             <div>
-                <div>
+                <div {...this.props}>
                     <BrowserRouter>
                         <NavBar/>
                         <Switch>
@@ -32,4 +38,17 @@ class App extends Component {
     }
 }
 
-export default App;
+
+const mapStateToProps=state=>{
+    return{
+        isAuthenticated:state.token!==null,
+    }
+}
+
+const mapDispatchToProps=dispatch=>
+{
+    return{
+        onTryAutoSignup:()=>dispatch(actions.authCheckState())
+    }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(App);
