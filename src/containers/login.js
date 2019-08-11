@@ -52,7 +52,8 @@ function SignIn(props) {
     const handleSubmit = e => {
         e.preventDefault();
         console.log({ email: username, password: password });
-        props.onAuth(username,password)
+        props.onAuth(username, password);
+        props.history.push("/");
     };
     return (
         <div>
@@ -79,10 +80,10 @@ function SignIn(props) {
                                 required
                                 fullWidth
                                 id="email"
-                                label="Email Address"
-                                name="email"
-                                type="email"
-                                autoComplete="email"
+                                label="username"
+                                name="username"
+
+                            
                                 autoFocus
                                 value={username}
                                 onChange={e => setUsername(e.target.value)}
