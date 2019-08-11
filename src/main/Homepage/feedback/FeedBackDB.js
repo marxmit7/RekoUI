@@ -7,7 +7,7 @@ export default class FeedBackService {
     constructor() {}
 
     getEmeddingList() { // Get the list of faceid
-        const url = `${API_URL}/api/faceid/`;
+        const url = `${API_URL}/api/embed/`;
         return axios.get(url).then(response => response.data);
     }
     getFeedbackList() { //get the info saved in feedback table
