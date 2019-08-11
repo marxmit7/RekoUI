@@ -47,7 +47,7 @@ export default class NameInput extends React.Component {
 
     render() {
         return (
-            <div>
+            <div style ={{marginLeft:'24px'}}>
                 <TextField
                     id="outlined-dense"
                     label="Suggest Name"
@@ -56,7 +56,8 @@ export default class NameInput extends React.Component {
                     value={this.state.value}
                     onChange={this.handleChange}
                 />
-                <button onClick={this.handleClick}>Send</button>
+
+                <button onClick={this.handleClick} style ={{margin:'10px'}}>Send</button>
             </div>
         );
     }

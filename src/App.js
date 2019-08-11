@@ -9,6 +9,8 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import APIsDOC from "./main/Homepage/doc/index";
 import { connect } from "react-redux";
 import * as actions from "./store/actions/auth";
+import SignIn from "./containers/login";
+import SignUp from "./containers/signup";
 
 class App extends Component {
     componentDidMount() {
@@ -31,6 +33,8 @@ class App extends Component {
                                 exact
                             />
                             <Route path="/doc" component={APIsDOC} exact />
+                            <Route path="/login" component={SignIn} exact />
+                            <Route path="/register" component={SignUp} exact />
                         </Switch>
                     </BrowserRouter>
                 </div>
