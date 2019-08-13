@@ -11,6 +11,7 @@ import { connect } from "react-redux";
 import * as actions from "./store/actions/auth";
 import SignIn from "./containers/login";
 import SignUp from "./containers/signup";
+import MyProfileView from "./containers/profile";
 
 class App extends Component {
     componentDidMount() {
@@ -21,20 +22,53 @@ class App extends Component {
             <div>
                 <div {...this.props}>
                     <BrowserRouter>
-                        <NavBar />
+                        <NavBar isAuthenticated={this.props.isAuthenticated} />
                         <Switch>
-                            <Route path="/" component={CoreBody} exact />
-                            <Route path="/image" component={ImageFR} exact />
-                            <Route path="/embed" component={EmbedNow} exact />
-                            <Route path="/video" component={VideoFR} exact />
                             <Route
-                                path="/feedback"
-                                component={FeedBack}
+                                path="/"
+                                component={() => <CoreBody />}
                                 exact
                             />
-                            <Route path="/doc" component={APIsDOC} exact />
-                            <Route path="/login" component={SignIn} exact />
-                            <Route path="/register" component={SignUp} exact />
+                            <Route
+                                path="/image"
+                                component={() => <ImageFR />}
+                                exact
+                            />
+                            <Route
+                                path="/embed"
+                                component={() => <EmbedNow />}
+                                exact
+                            />
+                            <Route
+                                path="/video"
+                                component={() => <VideoFR />}
+                                exact
+                            />
+                            <Route
+                                path="/feedback"
+                                component={() => <FeedBack />}
+                                exact
+                            />
+                            <Route
+                                path="/doc"
+                                component={() => <APIsDOC />}
+                                exact
+                            />
+                            <Route
+                                path="/login"
+                                component={() => <SignIn />}
+                                exact
+                            />
+                            <Route
+                                path="/register"
+                                component={() => <SignUp />}
+                                exact
+                            />
+                            <Route
+                                path="/profile"
+                                component={() => <MyProfileView />}
+                                exact
+                            />
                         </Switch>
                     </BrowserRouter>
                 </div>
@@ -45,7 +79,7 @@ class App extends Component {
 
 const mapStateToProps = state => {
     return {
-        isAuthenticated: state.token !== null
+        isAuthenticated: localStorage.getItem("token") !== null
     };
 };
 

@@ -82,8 +82,6 @@ function SignIn(props) {
                                 id="email"
                                 label="username"
                                 name="username"
-
-
                                 autoFocus
                                 value={username}
                                 onChange={e => setUsername(e.target.value)}
