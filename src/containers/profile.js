@@ -15,7 +15,7 @@ class MyProfileView extends Component {
                         <div>
                             want to{" "}
                             <a onClick={() => actions.logout()} href="/">
-                                logout
+                                logout ?
                             </a>{" "}
                         </div>
                     ) : (
