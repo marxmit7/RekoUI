@@ -24,49 +24,37 @@ class App extends Component {
                     <BrowserRouter>
                         <NavBar isAuthenticated={this.props.isAuthenticated} />
                         <Switch>
-                            <Route
-                                path="/"
-                                component={() => <CoreBody />}
-                                exact
-                            />
+                            <Route path="/" render={() => <CoreBody />} exact />
                             <Route
                                 path="/image"
-                                component={() => <ImageFR />}
+                                render={() => <ImageFR />}
                                 exact
                             />
                             <Route
                                 path="/embed"
-                                component={() => <EmbedNow />}
+                                render={() => <EmbedNow />}
                                 exact
                             />
                             <Route
                                 path="/video"
-                                component={() => <VideoFR />}
+                                render={() => <VideoFR />}
                                 exact
                             />
                             <Route
                                 path="/feedback"
-                                component={() => <FeedBack />}
+                                render={() => <FeedBack />}
                                 exact
                             />
                             <Route
                                 path="/doc"
-                                component={() => <APIsDOC />}
+                                render={() => <APIsDOC />}
                                 exact
                             />
-                            <Route
-                                path="/login"
-                                component={() => <SignIn />}
-                                exact
-                            />
-                            <Route
-                                path="/register"
-                                component={() => <SignUp />}
-                                exact
-                            />
+                            <Route path="/login" component={SignIn} exact />
+                            <Route path="/register" component={SignUp} exact />
                             <Route
                                 path="/profile"
-                                component={() => <MyProfileView />}
+                                render={() => <MyProfileView />}
                                 exact
                             />
                         </Switch>
