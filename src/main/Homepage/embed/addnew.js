@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import "./index.css";
 import axios from "axios";
+import BASEURL from "../../../constant";
 
-const API_URL = "http://localhost:8000";
+const API_URL = BASEURL;
 
 export default class EmbedService {
     constructor() {}
