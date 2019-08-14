@@ -7,6 +7,7 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import { AddNewContent } from "./buttons";
 import axios from "axios";
+import {BASEURL} from "../../../constant";
 
 export default function EmbdeFormDialog() {
     const [open, setOpen] = React.useState(false);
@@ -27,7 +28,7 @@ export default function EmbdeFormDialog() {
         event.preventDefault();
         let form_data = new FormData();
         form_data.append('file',file);
-        let url = "http://localhost:8000/api/embed/";
+        let url = `${BASEURL}/api/embed/`;
         axios
             .post(url, form_data, {
                 headers: {

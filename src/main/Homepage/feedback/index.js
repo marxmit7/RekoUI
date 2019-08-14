@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import FeedBackService from "./FeedBackDB";
 import Maincard from "./cardview";
+import { BASEURL } from "../../../constant";
+const API_URL = BASEURL;
 const fbservice = new FeedBackService();
-const API_URL = "http://localhost:8000";
+
 // https://djangobook.com/advanced-models/
 class FeedBack extends Component {
     constructor(props) {
@@ -35,13 +37,11 @@ class FeedBack extends Component {
         return (
             <div>
                 <div>
-
                     <Maincard
                         fileurl={API_URL + this.state.test.fileurl}
                         data={this.state.test.data}
                     />
                 </div>
-
             </div>
         );
     }

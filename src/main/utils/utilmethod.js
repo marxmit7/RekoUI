@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import {BASEURL} from "../../constant";
 
 class TestApi extends Component {
     state = {
@@ -23,7 +24,7 @@ class TestApi extends Component {
         console.log(this.state);
         let form_data = new FormData();
         form_data.append("file", this.state.file);
-        let url = "http://localhost:8000/api/image/";
+        let url = `${BASEURL}/api/image/`;
         axios
             .post(url, form_data, {
                 headers: {

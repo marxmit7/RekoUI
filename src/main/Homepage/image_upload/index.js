@@ -12,6 +12,7 @@ import SimFaceView from "./simface/SimFaceView";
 import ViewFaceResult from "./simface/ShowResult";
 import NSFWview from "./nsfw/NSFWview";
 import NSFWForm from "./nsfw/NSFWDialogeForm";
+import {BASEURL} from "../../../constant";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -115,7 +116,7 @@ class ImageFR extends Component {
         event.preventDefault();
         let form_data = new FormData();
         form_data.append("file", this.state.NSFWimgfile);
-        let url = "http://localhost:8000/api/nsfw/";
+        let url = `${BASEURL}/api/nsfw/`;
         axios
             .post(url, form_data, {
                 headers: {
@@ -133,7 +134,7 @@ class ImageFR extends Component {
         event.preventDefault();
         let form_data = new FormData();
         form_data.append("file", this.state.file);
-        let url = "http://localhost:8000/api/image/";
+        let url = `${BASEURL}/api/image/`;
         axios
             .post(url, form_data, {
                 headers: {
@@ -152,7 +153,7 @@ class ImageFR extends Component {
         let form_data = new FormData();
         form_data.append("file", this.state.referenceImage);
         form_data.append("compareImage", this.state.compareImage);
-        let url = "http://localhost:8000/api/simface/";
+        let url = `${BASEURL}/api/simface/`;
         axios
             .post(url, form_data, {
                 headers: {

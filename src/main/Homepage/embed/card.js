@@ -4,6 +4,8 @@ import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardActions from "@material-ui/core/CardActions";
 import CardMedia from "@material-ui/core/CardMedia";
+import {BASEURL}  from "../../../constant";
+
 
 const useStyles = makeStyles({
   card: {
@@ -13,7 +15,7 @@ const useStyles = makeStyles({
 
 export default function ImgMediaCard(props) {
   const classes = useStyles();
-  const fileurl = "http://localhost:8000"+props.data.fileurl;
+  const fileurl = BASEURL+props.data.fileurl;
 
   return (
     <Card className={classes.card}>

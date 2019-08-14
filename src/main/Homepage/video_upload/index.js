@@ -10,6 +10,8 @@ import YouTubePlayer from "./YouTubeView/yt";
 import YTFormDialog from "./YouTubeView/formYTlink";
 import VideoViewBox from "./DefaultView/uploadedVideoViewBox";
 // https://blog.teamtreehouse.com/building-custom-controls-for-html5-videos
+import {BASEURL} from "../../../constant";
+
 class VideoFR extends Component {
     constructor(props) {
         super(props);
@@ -45,7 +47,7 @@ class VideoFR extends Component {
     handleLinkChangeValue(evalue) {
         this.setState({ YTlink: evalue });
         let form_data = new FormData();
-        let url = "http://localhost:8000/api/ytstream/";
+        let url = `${BASEURL}/api/ytstream/`;
         form_data.set("StreamLink", JSON.stringify(evalue));
         axios
             .post(url, form_data, {
@@ -69,7 +71,7 @@ class VideoFR extends Component {
         event.preventDefault();
         let form_data = new FormData();
         form_data.append("file", this.state.file);
-        let url = "http://localhost:8000/api/old_video/";
+        let url = `${BASEURL}/api/old_video/`;
         axios
             .post(url, form_data, {
                 headers: {
