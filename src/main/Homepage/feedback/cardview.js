@@ -7,6 +7,7 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import "./index.css";
 import DividerMain from "./divider";
+
 const useStyles = makeStyles({
     card: {
         maxWidth: 400
