@@ -13,7 +13,7 @@ class EmbedNow extends Component {
         super(props);
 
         this.state = {
-            contents: [{ id: "", title: "", fileurl: '', created_on: "" },]
+            contents: null
         };
     }
 
@@ -22,26 +22,30 @@ class EmbedNow extends Component {
             this.setState({ contents: result.data });
         });
         // console.log(this.state.contents)
-
     }
 
     render() {
         const contents = this.state.contents;
-        console.log(contents)
+        const renderThis =
+            contents !== null
+                ? contents.map(data => {
+                      return (
+                          <div
+                              style={{ display: "inline-block" }}
+                              key={data.id}
+                          >
+                              <div style={{ padding: "5px" }}>
+                                  <ImgMediaCard data={data} />
+                              </div>
+                          </div>
+                      );
+                  })
+                : null;
 
         return (
-            <div >
-            <EmbdeFormDialog/>
-                {contents.map(data => {
-                    return (
-                        <div style={{ display: "inline-block" }} key = {data.id}>
-                            <div style={{ padding: "5px" }}>
-                                <ImgMediaCard data={data} />
-                            </div>
-                        </div>
-                    );
-                })}
-
+            <div>
+                <EmbdeFormDialog />
+                {renderThis}
             </div>
         );
     }
