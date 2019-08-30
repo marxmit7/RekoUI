@@ -13,7 +13,7 @@ function VideoFR() {
         <div>
         <b>POST</b>
         <br />
-        /nsfw
+        /old_video
         <POSTReqRes
         ReqVal={POSTReqTable()}
         ResVal={POSTResTable()}
