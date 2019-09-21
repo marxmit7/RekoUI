@@ -37,10 +37,9 @@ export default function EmbdeFormDialog() {
             })
             .then(response => {
                 console.log(response);
+                window.location.reload();
                 })
             .catch(console.log);
-            
-            window.location.reload();
     }
 
     return (
