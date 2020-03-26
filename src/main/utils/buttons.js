@@ -42,6 +42,22 @@ function UploadButton() {
     );
 }
 
+function RetinaFaceButton() {
+    const classes = useStyles();
+
+    return (
+        <div>
+            <Button
+                variant="contained"
+                color="primary"
+                className={classes.button}
+            >
+                RetinaFace
+            </Button>
+        </div>
+    );
+}
+
 function ProcessButton() {
     const classes = useStyles();
 
@@ -91,4 +107,4 @@ function AddNewLink() {
     );
 }
 
-export { UploadButton, ProcessButton, AddNewContent, AddNewLink };
+export { UploadButton, ProcessButton, AddNewContent, AddNewLink, RetinaFaceButton };
