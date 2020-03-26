@@ -5,14 +5,16 @@ import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
-import { UploadButton } from "../../utils/buttons";
+import { UploadButton, RetinaFaceButton } from "../../utils/buttons";
+
 import DefaultImageFRView from "./defaultFR/imageView";
+import RetinaFaceImageFRView from "./retinaFace/retinaFaceView";
 import SimFaceForm from "./simface/SimFaceDialogeForm";
 import SimFaceView from "./simface/SimFaceView";
 import ViewFaceResult from "./simface/ShowResult";
 import NSFWview from "./nsfw/NSFWview";
 import NSFWForm from "./nsfw/NSFWDialogeForm";
-import {BASEURL} from "../../../constant";
+import { BASEURL } from "../../../constant";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -47,6 +49,8 @@ class ImageFR extends Component {
         this.handleSimFaceSubmit = this.handleSimFaceSubmit.bind(this);
         this.handleNSFWSubmit = this.handleNSFWSubmit.bind(this);
         this.handleNSFW = this.handleNSFW.bind(this);
+        this.handleRetinaFaceSubmit = this.handleRetinaFaceSubmit.bind(this);
+
     }
     handleState(event) {
         this.setState({
@@ -54,8 +58,8 @@ class ImageFR extends Component {
             preview: URL.createObjectURL(event.target.files[0]),
             filetext: null,
             NSFWimgfile: null,
-            referenceImage:null,
-            compareImage:null,
+            referenceImage: null,
+            compareImage: null,
             renderView: "defaultView",
             simlarFaceResult: null,
         });
@@ -74,8 +78,8 @@ class ImageFR extends Component {
             renderView: "nsfw",
             NSFWimgfile: imgfile,
             filetext: null,
-            referenceImage:null,
-            compareImage:null,
+            referenceImage: null,
+            compareImage: null,
             simlarFaceResult: null,
         });
     }
@@ -101,6 +105,15 @@ class ImageFR extends Component {
                             )}
                         />
                     </div>
+                );
+            case "retinaFaceView":
+                return (
+
+                    <RetinaFaceImageFRView
+                        filetext={this.state.filetext}
+                        preview={this.state.preview}
+                    />
+
                 );
             default:
                 return (
@@ -134,6 +147,26 @@ class ImageFR extends Component {
         event.preventDefault();
         let form_data = new FormData();
         form_data.append("file", this.state.file);
+        let url = `${BASEURL}/api/image/`;
+        axios
+            .post(url, form_data, {
+                headers: {
+                    "content-type": "multipart/form-data"
+                }
+            })
+            .then(response => {
+                this.setState({
+                    resultjson: JSON.stringify(response.data, null, 2)
+                });
+            })
+            .catch(console.log);
+    }
+    handleRetinaFaceSubmit(event) {
+        event.preventDefault();
+        let form_data = new FormData();
+        form_data.append("file", this.state.file);
+        form_data.append("network", "RetinaFace");
+
         let url = `${BASEURL}/api/image/`;
         axios
             .post(url, form_data, {
@@ -192,6 +225,8 @@ class ImageFR extends Component {
                                     <label htmlFor="contained-button-file">
                                         <UploadButton />
                                     </label>
+
+
                                     <Button
                                         variant="contained"
                                         color="primary"
@@ -206,6 +241,8 @@ class ImageFR extends Component {
                                                 case "simFaceView":
                                                     return this
                                                         .handleSimFaceSubmit;
+                                                case "retinaFaceView":
+                                                    return this.handleRetinaFaceSubmit;
                                                 default:
                                                     return this
                                                         .handleDefaultSubmit;
@@ -213,6 +250,19 @@ class ImageFR extends Component {
                                         })()}
                                     >
                                         Process
+                                    </Button>
+                                    <Button
+                                        variant="contained"
+                                        color="primary"
+                                        onClick={(() => {
+
+                                            return this
+                                                .handleRetinaFaceSubmit;
+
+
+                                        })()}
+                                    >
+                                        RetinaNet
                                     </Button>
                                 </div>
                             </form>
@@ -232,7 +282,7 @@ class ImageFR extends Component {
                             <div>
                                 {" "}
                                 <pre>{this.state.resultjson}</pre>
-                                {this.state.simlarFaceResult !== null  ? (
+                                {this.state.simlarFaceResult !== null ? (
                                     <ViewFaceResult
                                         responseResult={
                                             this.state.simlarFaceResult
@@ -243,7 +293,7 @@ class ImageFR extends Component {
                         </Paper>
                     </Grid>
                 </Grid>
-            </div>
+            </div >
         );
     }
 }
