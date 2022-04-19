@@ -1,4 +1,3 @@
-import React, { Component } from "react";
 import "./index.css";
 import axios from "axios";
 import {BASEURL}  from "../../../constant";

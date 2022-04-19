@@ -4,7 +4,7 @@ import { BASEURL } from "../../../constant";
 const API_URL = BASEURL;
 
 export default class FeedBackService {
-    constructor() {}
+    //constructor() {}
 
     getEmeddingList() {
         // Get the list of faceid

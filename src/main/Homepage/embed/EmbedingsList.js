@@ -5,7 +5,7 @@ import {BASEURL}  from "../../../constant";
 const API_URL = BASEURL;
 
 export default class EmbedService  {
-    constructor(){}
+    //constructor(){}
 
     getEmbeddingsList() {
         const url = `${API_URL}/api/embed/`;
