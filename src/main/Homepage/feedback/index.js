@@ -28,9 +28,9 @@ class FeedBack extends Component {
     }
 
     render() {
-        const EmbeddingContents = this.state.EmbeddingContents;
-        let randomIndex = Math.floor(Math.random() * EmbeddingContents.length);
-        let indexId = EmbeddingContents[randomIndex]["id"];
+        //const EmbeddingContents = this.state.EmbeddingContents;
+        //let randomIndex = Math.floor(Math.random() * EmbeddingContents.length);
+        //let indexId = EmbeddingContents[randomIndex]["id"];
         // console.log(indexId, EmbeddingContents[randomIndex]);
         // console.log(this.state.test.data,API_URL+ this.state.test.fileurl);
 
